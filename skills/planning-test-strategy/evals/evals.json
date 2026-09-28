@@ -1,0 +1,39 @@
+{
+  "skill_name": "planning-test-strategy",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We're building subscription billing: plans, proration on upgrade/downgrade, Stripe webhooks, and a customer invoice page. Before we start coding, what's our test plan? Stack is Node + Postgres + React, tests use vitest and Playwright.",
+      "expected_output": "A risk-ranked strategy table mapping billing risks (proration math, webhook idempotency and ordering, double charge on retry, tenant isolation on invoices) to the cheapest level, with oracles, data setup, CI gates, and explicit exclusions.",
+      "expectations": [
+        "Starts from risks (money, idempotency, webhook replay/order, authorization) rather than listing test types",
+        "Assigns proration math to unit or property tests and webhook idempotency to integration tests with a real database",
+        "Limits Playwright E2E to a small number of critical journeys (e.g. upgrade flow, invoice view)",
+        "Every row names an oracle or observable outcome",
+        "Includes an explicit exclusions / not-tested list and CI gate placement"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Our CI takes 48 minutes and people rerun failures until green. Management wants 95% coverage as the fix. Can you give me a strategy to get our suite healthy? There are ~3,200 tests, mostly Cypress.",
+      "expected_output": "The agent rejects coverage as the goal, proposes inventorying tests by protected behavior, moving checks down to cheaper levels, deleting redundant E2E, setting a pre-merge runtime budget and a zero-tolerance flake policy with owned quarantine.",
+      "expectations": [
+        "Explains that a coverage percentage is not the success criterion and proposes coverage as a signal only",
+        "Proposes mapping existing E2E tests to risks and pushing many to integration or unit level",
+        "Sets a pre-merge runtime budget and moves slow suites to nightly or pre-release",
+        "Defines a flake policy with an owner and expiry for quarantined tests instead of retries"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Just write tests for everything in src/services/, we need to show the auditors we have tests. It's a Django app handling patient appointments.",
+      "expected_output": "The agent plans risk-first despite the 'test everything' framing: identifies high-risk behaviors (authorization per patient, double booking, timezone handling, PHI in fixtures), uses synthetic data, and lists what it will not test and why.",
+      "expectations": [
+        "Does not propose one test per function; prioritizes by risk",
+        "Flags authorization/tenant isolation and double-booking concurrency as high-impact risks",
+        "Requires synthetic, non-production patient data in fixtures",
+        "Produces an output table with levels, oracles and gates plus an exclusions list"
+      ]
+    }
+  ]
+}

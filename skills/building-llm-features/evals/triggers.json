@@ -1,0 +1,15 @@
+[
+  {"query": "add an AI summary of each ticket to the helpdesk sidebar using the openai api", "should_trigger": true},
+  {"query": "our LLM extraction returns broken JSON maybe 2% of the time and crashes the worker", "should_trigger": true},
+  {"query": "build a RAG chatbot over our docs site with citations", "should_trigger": true},
+  {"query": "we want an agent that can create jira tickets and send slack messages on behalf of users, how do we make it safe", "should_trigger": true},
+  {"query": "switching our classifier from gpt to claude, how do we know it's not worse?", "should_trigger": true},
+  {"query": "the AI feature costs us $3k a day now, help me cut it without hurting quality", "should_trigger": true},
+  {"query": "someone got our support bot to reveal its system prompt by pasting instructions in their message", "should_trigger": true},
+  {"query": "write an eval suite for the SKILL.md files in this repo", "should_trigger": false},
+  {"query": "design the REST API for our new notifications service", "should_trigger": false},
+  {"query": "threat model the whole payments platform before the audit", "should_trigger": false},
+  {"query": "what's the correct flag for the aws cli to set a lambda timeout in the current version", "should_trigger": false},
+  {"query": "dispatch three subagents to review this PR in parallel", "should_trigger": false},
+  {"query": "add full-text search with postgres tsvector to the products table", "should_trigger": false}
+]

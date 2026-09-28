@@ -1,0 +1,14 @@
+[
+  {"query": "we're about to build the new multi-tenant export service, what should the testing approach be before we write any code?", "should_trigger": true},
+  {"query": "our test suite takes 40 minutes and half the team ignores failures, help me figure out what to keep, cut, and move to nightly", "should_trigger": true},
+  {"query": "is unit + a couple of e2e tests enough for the checkout rewrite or do we need contract tests with the payments service too?", "should_trigger": true},
+  {"query": "should we set a coverage target for the monorepo? leadership suggested 90%", "should_trigger": true},
+  {"query": "draft a test plan for migrating our cron jobs to a queue-based worker system", "should_trigger": true},
+  {"query": "which of our tests should block merges and which can run nightly?", "should_trigger": true},
+  {"query": "write a failing test for the discount rounding bug and then fix it", "should_trigger": false},
+  {"query": "add a playwright test that logs in and completes the onboarding wizard", "should_trigger": false},
+  {"query": "test_sync_orders fails about one in ten runs on CI, figure out why", "should_trigger": false},
+  {"query": "set up github actions to run pytest and eslint on every PR", "should_trigger": false},
+  {"query": "review my PR, did I add enough tests for the new endpoint?", "should_trigger": false},
+  {"query": "load test our API to see how many requests per second it can take", "should_trigger": false}
+]

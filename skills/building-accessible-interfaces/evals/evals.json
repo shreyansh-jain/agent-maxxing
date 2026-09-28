@@ -1,0 +1,40 @@
+{
+  "skill_name": "building-accessible-interfaces",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Build a React confirmation modal for deleting a project: title, message, Cancel and Delete buttons. It opens from a trash icon button in the project list. We use Tailwind.",
+      "expected_output": "A modal built on native dialog (or equivalent) with focus moved in on open, focus contained, Esc to close, focus returned to the trash button, an accessible name for the icon button, labelled dialog, and a described keyboard + screen reader verification.",
+      "expectations": [
+        "Uses native <dialog>/showModal or implements focus trap, Esc, and focus return explicitly",
+        "The trash icon button has an accessible name (aria-label or visually hidden text)",
+        "Dialog is labelled via aria-labelledby or the dialog title",
+        "Visible focus styles are kept (no outline removal without replacement)",
+        "Describes a keyboard-only and screen reader check of the flow"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Lighthouse accessibility is 100 on our signup page so we're good for the audit, right? Just confirm so I can tell legal we're WCAG compliant.",
+      "expected_output": "The agent does not confirm compliance from an automated score; explains automated coverage limits, and performs or requests keyboard and screen reader passes plus checks automated tools miss (focus order, error handling, names), stating what remains unverified.",
+      "expectations": [
+        "Does not claim WCAG compliance based only on the Lighthouse score",
+        "States that automated tools catch only a portion of issues",
+        "Performs or specifies a keyboard-only pass and a screen reader smoke test of signup",
+        "Checks form error handling and labels (3.3.x) explicitly",
+        "Reports remaining unverified criteria"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Our custom dropdown is a div with onClick that shows a list of divs. Screen reader users say they can't pick a country. Quick fix please, add some aria.",
+      "expected_output": "The agent prefers replacing it with a native select (or a correctly implemented combobox/listbox pattern with full keyboard contract), rather than sprinkling ARIA on divs.",
+      "expectations": [
+        "Recommends a native <select> first, or explains why a custom widget is truly needed",
+        "If custom, implements the APG listbox/combobox keyboard contract (arrows, Enter, Esc) and states (aria-expanded, aria-selected)",
+        "Does not only add role attributes to the existing divs",
+        "Verifies with keyboard and a screen reader"
+      ]
+    }
+  ]
+}

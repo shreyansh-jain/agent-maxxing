@@ -1,0 +1,14 @@
+[
+  {"query": "axe is reporting 14 violations on the dashboard, mostly 'buttons must have discernible text' and contrast, can you fix them", "should_trigger": true},
+  {"query": "a blind user emailed saying they can't submit our contact form with voiceover, help", "should_trigger": true},
+  {"query": "build an accessible tabs component in vue with proper keyboard support", "should_trigger": true},
+  {"query": "we need to be WCAG 2.2 AA compliant before the EU accessibility act deadline, where do we start with our web app", "should_trigger": true},
+  {"query": "keyboard focus disappears behind our sticky header when tabbing through the settings page", "should_trigger": true},
+  {"query": "make sure the new signup form works for screen reader users and shows errors properly", "should_trigger": true},
+  {"query": "our lighthouse performance score is 42, help improve LCP on the homepage", "should_trigger": false},
+  {"query": "write a playwright test for the signup journey", "should_trigger": false},
+  {"query": "redesign the pricing page so it looks less generic", "should_trigger": false},
+  {"query": "design the props API for our new DataTable component library", "should_trigger": false},
+  {"query": "translate the app into german and french", "should_trigger": false},
+  {"query": "add dark mode to the settings page", "should_trigger": false}
+]

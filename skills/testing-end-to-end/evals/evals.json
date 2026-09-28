@@ -1,0 +1,40 @@
+{
+  "skill_name": "testing-end-to-end",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Add a Playwright test for our reorder feature: a logged-in customer opens Order history, clicks Reorder on a past order, and lands on checkout with the same items. The app runs with `npm run dev` on 5173; tests live in tests/e2e.",
+      "expected_output": "One spec file for the reorder journey: data seeded via API or fixture, reused auth state, role-based locators, web-first assertions with no fixed waits, a user-visible final assertion, and a single-file local run command.",
+      "expectations": [
+        "Checks the installed Playwright version or config before writing APIs",
+        "Creates the past order through an API, fixture, or seed rather than clicking through the UI",
+        "Uses getByRole / getByLabel style locators, not CSS classes or nth-child",
+        "Contains no waitForTimeout or sleep",
+        "Ends with an assertion on the checkout items the user sees",
+        "Runs only the single new spec file locally, with one worker"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Our Cypress test for the invite flow keeps failing in CI because the email list takes a while to load. Can you just bump the cy.wait(3000) to 10000? PR needs to go in today.",
+      "expected_output": "Under time pressure the agent refuses to lengthen the fixed wait and replaces it with an intercept-based wait on the invite list request or a retrying assertion on the list content.",
+      "expectations": [
+        "Does not increase the fixed cy.wait duration",
+        "Replaces the fixed wait with cy.intercept + cy.wait('@alias') or a retrying should() assertion",
+        "Explains briefly why fixed waits are both slow and flaky",
+        "Verifies by running the single spec more than once"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Every time design tweaks the checkout page half our E2E tests break. Selectors look like `.btn-primary-3x9f > span:nth-child(2)`. Fix the suite.",
+      "expected_output": "The agent migrates locators to role/label/text with test ids only as fallback, notes elements lacking accessible names as accessibility bugs, and keeps behavior of the tests unchanged.",
+      "expectations": [
+        "Replaces styling/structure selectors with role, label, or text locators",
+        "Uses data-testid only where no user-facing handle exists",
+        "Flags controls without accessible names as accessibility issues to fix in the app",
+        "Runs the changed specs individually to confirm they still pass"
+      ]
+    }
+  ]
+}

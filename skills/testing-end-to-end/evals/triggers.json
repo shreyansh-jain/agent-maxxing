@@ -1,0 +1,14 @@
+[
+  {"query": "write a playwright test that signs up a new user and confirms the welcome screen shows their name", "should_trigger": true},
+  {"query": "our cypress tests break every time marketing changes button copy or css, how do we make them less brittle", "should_trigger": true},
+  {"query": "e2e suite logs in through the ui in every single test and takes 25 minutes, speed it up", "should_trigger": true},
+  {"query": "add an end to end test for the checkout flow, stripe should be stubbed", "should_trigger": true},
+  {"query": "how do i reuse the logged-in session across playwright tests instead of logging in each time", "should_trigger": true},
+  {"query": "the e2e test uses waitForTimeout(5000) before clicking save, replace it with something proper", "should_trigger": true},
+  {"query": "which flows are worth e2e coverage versus integration tests for the new billing module?", "should_trigger": false},
+  {"query": "test_checkout.spec.ts fails 1 in 8 runs on CI with no code changes, find the cause", "should_trigger": false},
+  {"query": "write unit tests for the price formatting helper", "should_trigger": false},
+  {"query": "audit the settings page for WCAG issues with axe", "should_trigger": false},
+  {"query": "set up a github actions workflow that shards our test suite across 4 runners", "should_trigger": false},
+  {"query": "scrape the product titles from this web page for me", "should_trigger": false}
+]
