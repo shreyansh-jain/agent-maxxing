@@ -1,0 +1,262 @@
+{
+  "name": "skills-map",
+  "owner": {
+    "name": "Shreyansh Jain"
+  },
+  "metadata": {
+    "description": "Principal-grade software and product engineering Agent Skills, synthesized from the best open-source skill collections.",
+    "version": "0.2.0"
+  },
+  "plugins": [
+    {
+      "name": "swe-core",
+      "description": "The default set: the skills used on most engineering tasks, from triage to shipping.",
+      "source": "./",
+      "strict": false,
+      "category": "development",
+      "skills": [
+        "./skills/assessing-complexity",
+        "./skills/clarifying-intent",
+        "./skills/writing-specs",
+        "./skills/planning-implementation",
+        "./skills/implementing-incrementally",
+        "./skills/test-driven-development",
+        "./skills/debugging-systematically",
+        "./skills/verifying-before-completion",
+        "./skills/reviewing-code",
+        "./skills/receiving-code-review",
+        "./skills/simplifying-code",
+        "./skills/grounding-in-official-docs",
+        "./skills/onboarding-to-codebases",
+        "./skills/fixing-ci-failures",
+        "./skills/writing-commits-and-prs",
+        "./skills/shipping-changes",
+        "./skills/dispatching-subagents",
+        "./skills/auditing-security"
+      ]
+    },
+    {
+      "name": "swe-all",
+      "description": "Every skill in this marketplace, covering the full product-engineering lifecycle.",
+      "source": "./",
+      "strict": false,
+      "category": "development",
+      "skills": [
+        "./skills/assessing-complexity",
+        "./skills/auditing-security",
+        "./skills/authoring-skills",
+        "./skills/building-accessible-interfaces",
+        "./skills/building-llm-features",
+        "./skills/clarifying-intent",
+        "./skills/controlling-cloud-costs",
+        "./skills/debugging-systematically",
+        "./skills/designing-data-models",
+        "./skills/designing-interfaces",
+        "./skills/designing-resilient-systems",
+        "./skills/designing-system-architecture",
+        "./skills/dispatching-subagents",
+        "./skills/documenting-decisions",
+        "./skills/engineering-products-end-to-end",
+        "./skills/estimating-capacity",
+        "./skills/fixing-ci-failures",
+        "./skills/grounding-in-official-docs",
+        "./skills/handing-off-sessions",
+        "./skills/handling-personal-data",
+        "./skills/implementing-incrementally",
+        "./skills/instrumenting-observability",
+        "./skills/managing-feature-flags",
+        "./skills/managing-technical-debt",
+        "./skills/measuring-product-outcomes",
+        "./skills/migrating-databases-safely",
+        "./skills/modeling-domains",
+        "./skills/modeling-threats",
+        "./skills/onboarding-to-codebases",
+        "./skills/optimizing-performance",
+        "./skills/planning-implementation",
+        "./skills/planning-test-strategy",
+        "./skills/receiving-code-review",
+        "./skills/refactoring-legacy-code",
+        "./skills/resolving-merge-conflicts",
+        "./skills/responding-to-incidents",
+        "./skills/reviewing-code",
+        "./skills/reviewing-plans",
+        "./skills/scoping-product-increments",
+        "./skills/setting-up-ci-pipelines",
+        "./skills/shipping-changes",
+        "./skills/simplifying-code",
+        "./skills/test-driven-development",
+        "./skills/testing-end-to-end",
+        "./skills/triaging-flaky-tests",
+        "./skills/upgrading-dependencies",
+        "./skills/using-git-worktrees",
+        "./skills/verifying-before-completion",
+        "./skills/writing-agent-context-files",
+        "./skills/writing-commits-and-prs",
+        "./skills/writing-design-docs",
+        "./skills/writing-infrastructure-as-code",
+        "./skills/writing-specs"
+      ]
+    },
+    {
+      "name": "swe-lead",
+      "description": "Principal-engineer triage and leadership: complexity assessment, end-to-end product playbook, technical debt.",
+      "source": "./",
+      "strict": false,
+      "category": "development",
+      "skills": [
+        "./skills/assessing-complexity",
+        "./skills/engineering-products-end-to-end",
+        "./skills/managing-technical-debt"
+      ]
+    },
+    {
+      "name": "swe-product",
+      "description": "Product engineering: scoping the smallest valuable increment and measuring outcomes.",
+      "source": "./",
+      "strict": false,
+      "category": "development",
+      "skills": [
+        "./skills/measuring-product-outcomes",
+        "./skills/scoping-product-increments"
+      ]
+    },
+    {
+      "name": "swe-define",
+      "description": "Clarify intent and write specs before any code.",
+      "source": "./",
+      "strict": false,
+      "category": "development",
+      "skills": [
+        "./skills/clarifying-intent",
+        "./skills/writing-specs"
+      ]
+    },
+    {
+      "name": "swe-architect",
+      "description": "System architecture, capacity, domain and data modeling, resilience, threat modeling, privacy, design docs.",
+      "source": "./",
+      "strict": false,
+      "category": "development",
+      "skills": [
+        "./skills/designing-data-models",
+        "./skills/designing-resilient-systems",
+        "./skills/designing-system-architecture",
+        "./skills/estimating-capacity",
+        "./skills/handling-personal-data",
+        "./skills/modeling-domains",
+        "./skills/modeling-threats",
+        "./skills/writing-design-docs"
+      ]
+    },
+    {
+      "name": "swe-plan",
+      "description": "Turn specs into reviewable implementation plans and pressure-test them.",
+      "source": "./",
+      "strict": false,
+      "category": "development",
+      "skills": [
+        "./skills/planning-implementation",
+        "./skills/reviewing-plans"
+      ]
+    },
+    {
+      "name": "swe-build",
+      "description": "Implementation: incremental delivery, TDD, test strategy, E2E, accessibility, LLM features, interfaces, refactoring.",
+      "source": "./",
+      "strict": false,
+      "category": "development",
+      "skills": [
+        "./skills/building-accessible-interfaces",
+        "./skills/building-llm-features",
+        "./skills/designing-interfaces",
+        "./skills/grounding-in-official-docs",
+        "./skills/implementing-incrementally",
+        "./skills/onboarding-to-codebases",
+        "./skills/planning-test-strategy",
+        "./skills/refactoring-legacy-code",
+        "./skills/simplifying-code",
+        "./skills/test-driven-development",
+        "./skills/testing-end-to-end"
+      ]
+    },
+    {
+      "name": "swe-debug",
+      "description": "Root-cause debugging, flaky-test triage, and evidence before claiming done.",
+      "source": "./",
+      "strict": false,
+      "category": "development",
+      "skills": [
+        "./skills/debugging-systematically",
+        "./skills/triaging-flaky-tests",
+        "./skills/verifying-before-completion"
+      ]
+    },
+    {
+      "name": "swe-review",
+      "description": "Multi-axis code review, receiving review feedback, and security audits.",
+      "source": "./",
+      "strict": false,
+      "category": "development",
+      "skills": [
+        "./skills/auditing-security",
+        "./skills/receiving-code-review",
+        "./skills/reviewing-code"
+      ]
+    },
+    {
+      "name": "swe-operate",
+      "description": "Production: performance, safe database migrations, observability, incidents, cloud cost.",
+      "source": "./",
+      "strict": false,
+      "category": "development",
+      "skills": [
+        "./skills/controlling-cloud-costs",
+        "./skills/instrumenting-observability",
+        "./skills/migrating-databases-safely",
+        "./skills/optimizing-performance",
+        "./skills/responding-to-incidents"
+      ]
+    },
+    {
+      "name": "swe-ship",
+      "description": "Delivery: git, CI pipelines and fixes, infrastructure as code, feature flags, dependency upgrades, shipping.",
+      "source": "./",
+      "strict": false,
+      "category": "development",
+      "skills": [
+        "./skills/fixing-ci-failures",
+        "./skills/managing-feature-flags",
+        "./skills/resolving-merge-conflicts",
+        "./skills/setting-up-ci-pipelines",
+        "./skills/shipping-changes",
+        "./skills/upgrading-dependencies",
+        "./skills/using-git-worktrees",
+        "./skills/writing-commits-and-prs",
+        "./skills/writing-infrastructure-as-code"
+      ]
+    },
+    {
+      "name": "swe-docs",
+      "description": "Decision records, release docs, and agent context files (AGENTS.md / CLAUDE.md).",
+      "source": "./",
+      "strict": false,
+      "category": "development",
+      "skills": [
+        "./skills/documenting-decisions",
+        "./skills/writing-agent-context-files"
+      ]
+    },
+    {
+      "name": "swe-agents",
+      "description": "Working with agents: dispatching subagents, session handoffs, authoring and evaluating skills.",
+      "source": "./",
+      "strict": false,
+      "category": "development",
+      "skills": [
+        "./skills/authoring-skills",
+        "./skills/dispatching-subagents",
+        "./skills/handing-off-sessions"
+      ]
+    }
+  ]
+}
