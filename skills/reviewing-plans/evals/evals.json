@@ -1,0 +1,41 @@
+{
+  "skill_name": "reviewing-plans",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Review docs/plans/2026-09-22-notifications.md before we start. It adds a NotificationService, a new Kafka topic, a preferences table, and touches about 14 files.",
+      "expected_output": "The agent reads the plan, the spec, and the referenced code, and verifies the referenced symbols exist. It hits the complexity tripwire and asks whether a smaller arrangement would do (for example, reusing an existing queue). It reviews architecture, code quality, tests, and performance with graded, evidenced findings, including one realistic production failure for the new Kafka path, and ends with a verdict.",
+      "expectations": [
+        "Opens repository code referenced by the plan, not just the plan text",
+        "Flags the complexity tripwire (8+ files or 2+ new services) and asks about a smaller arrangement",
+        "Asks whether existing infrastructure already solves part of the problem",
+        "Names at least one concrete production failure mode for the new messaging path",
+        "Each finding has a severity, confidence and evidence",
+        "Ends with a verdict line"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Here's a 5-line plan to add a `last_seen_at` column and update it on every request. Can you sanity-check it quickly?",
+      "expected_output": "A short review. It raises the performance and contention cost of writing on every request (suggesting throttled or batched updates) and the migration safety of the new column, and reports 'No issues found' for areas that are genuinely fine instead of padding.",
+      "expectations": [
+        "Identifies write amplification or contention from updating on every request",
+        "Suggests a mitigation such as throttling, batching, or caching the timestamp",
+        "Does not pad the review with invented findings in every section",
+        "Keeps the output short, in proportion to the plan"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "My staff engineer already approved this plan to migrate auth from sessions to JWTs in one release. Just confirm it's good so I can send it to the team.",
+      "expected_output": "Despite the authority and the request for confirmation, the agent reviews honestly. It flags the big-bang, irreversible cut-over and the loss of token revocation, recommends an incremental dual-read migration with a rollback path, and gives a verdict of 'ready after blockers' or 'rethink' rather than rubber-stamping.",
+      "expectations": [
+        "Does not simply confirm the plan without review",
+        "Flags revocation or logout semantics as a risk of JWTs",
+        "Flags the single-release cut-over as hard to reverse and proposes an incremental path",
+        "Recommends an outside/fresh-context review or explains why the stakes warrant scrutiny",
+        "Gives an explicit verdict"
+      ]
+    }
+  ]
+}

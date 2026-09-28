@@ -1,0 +1,41 @@
+{
+  "skill_name": "planning-implementation",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "The spec in docs/specs/2026-09-20-saved-searches.md is approved (users can save a search, list saved searches, and delete one; max 20 per user). Write the implementation plan. Backend is FastAPI in api/, frontend is React in web/.",
+      "expected_output": "A plan with the required header, a file map, and vertical-slice tasks (for example save → list → delete → limit), each with files, consumes/produces interfaces, failing-test-first steps with commands and expected output, and acceptance criteria. A Review Focus section covers cases such as the 21st save and duplicate names. The agent presents the breakdown for approval.",
+      "expectations": [
+        "Plan starts with Goal, Architecture, Spec link, and Global Constraints including the 20-per-user limit",
+        "Tasks are vertical slices through api/ and web/, not 'all backend then all frontend'",
+        "Each task lists Files and an Interfaces block with exact signatures",
+        "Each task has a failing-test step with a run command and expected failure",
+        "Includes a Review Focus list with at least one uncovered edge case such as exceeding the limit",
+        "Contains no 'TBD' or 'handle edge cases' placeholder steps",
+        "Asks for approval of the breakdown instead of starting implementation"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "We need to rename the `customer_id` column to `account_id` everywhere — it's used in ~400 places across 6 packages. Plan it.",
+      "expected_output": "The agent recognises a wide mechanical change and plans expand → migrate in batches → contract: add the new name alongside the old one, migrate call sites package by package (each batch a task blocked by the expand), then remove the old name in a final task blocked by all batches.",
+      "expectations": [
+        "Uses an expand/migrate/contract sequence rather than one big rename task",
+        "Migration batches are split by package or directory, each its own task",
+        "The contract/removal task is blocked by every migration batch",
+        "Keeps the build green between batches"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Just give me a quick plan, three bullets max, for adding Stripe webhooks to handle subscription cancellations. I'll figure out the details.",
+      "expected_output": "The agent keeps the plan compact but does not drop the decisions an implementer needs: signature verification, idempotency on event ids, and the exact behavior on cancellation. It provides a short task list with a failing test per task, and flags that the Stripe API version should be checked against current docs.",
+      "expectations": [
+        "Includes webhook signature verification as a task or constraint",
+        "Includes idempotent handling of duplicate events",
+        "Each task names a test that proves it",
+        "Remains brief (does not produce a multi-page plan) while keeping these decisions"
+      ]
+    }
+  ]
+}

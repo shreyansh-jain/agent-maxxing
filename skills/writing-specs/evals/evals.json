@@ -1,0 +1,39 @@
+{
+  "skill_name": "writing-specs",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We agreed above: support staff need to issue partial refunds from the admin panel, audited, max 30 days after purchase. Write the spec. Code is in apps/admin and services/payments.",
+      "expected_output": "The agent reads apps/admin and services/payments before drafting, lists its assumptions, and writes a spec using the template with measurable success criteria, numbered behaviors including error cases (over-refund, outside the 30-day window), decisions described as modules and contracts, testing seams, and out-of-scope items. It saves the spec under docs/specs and asks for a review of the file.",
+      "expectations": [
+        "Reads code in apps/admin or services/payments before writing technical sections",
+        "Lists assumptions for the user to correct",
+        "Includes a behavior for refunding more than the remaining amount and one for the 30-day limit",
+        "Success criteria are testable conditions, not adjectives",
+        "Decisions section describes modules and interfaces, not file paths or code",
+        "Asks the user to review the written spec file before planning"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Write a PRD: make the mobile app feel faster.",
+      "expected_output": "The agent recognises that the intent is unclear and the requirement is only an adjective. It either routes to clarifying intent first or proposes measurable reframings (e.g. cold start < 2 s p90 on a mid-tier Android device, list scroll at 60 fps) and asks the user to confirm them before drafting the full spec.",
+      "expectations": [
+        "Does not produce a full spec whose success criterion is 'feels faster'",
+        "Proposes at least two measurable success criteria for 'faster'",
+        "Asks the user to confirm the reframed criteria or the intent before finalising"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Spec out the new onboarding: SSO login, a team invite flow, a billing trial, and a redesigned settings page. One doc please, we're in a hurry.",
+      "expected_output": "Under time pressure the agent still does the scope check, points out that these are several independent deliverables, and proposes separate specs (or a clearly separated index), starting with the one that blocks the others, instead of one blended doc.",
+      "expectations": [
+        "Identifies that the request spans multiple independent subsystems",
+        "Proposes splitting into separate specs or clearly separated deliverables",
+        "Suggests an order or names which deliverable blocks the others",
+        "Does not skip the assumption list because of time pressure"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+[
+  {"query": "ok we've settled the requirements, write this up as a spec in docs/specs so the team can review it", "should_trigger": true},
+  {"query": "can you draft a PRD for the csv import feature we just discussed", "should_trigger": true},
+  {"query": "turn this slack thread into a proper design doc with acceptance criteria", "should_trigger": true},
+  {"query": "I need a requirements doc for the webhook retry system before we plan the sprint", "should_trigger": true},
+  {"query": "our pm wrote 'make search better', can you turn it into testable requirements", "should_trigger": true},
+  {"query": "write the technical spec for moving sessions from cookies to redis", "should_trigger": true},
+  {"query": "i have a vague idea for a plugin marketplace, help me figure out what it should even be", "should_trigger": false},
+  {"query": "the spec is approved, now break it down into tasks with file paths and tests", "should_trigger": false},
+  {"query": "write an ADR for why we chose postgres over dynamo", "should_trigger": false},
+  {"query": "update the API reference docs for the new /v2/orders endpoint", "should_trigger": false},
+  {"query": "review this spec for gaps before we start coding", "should_trigger": false},
+  {"query": "write a README for this repo", "should_trigger": false}
+]

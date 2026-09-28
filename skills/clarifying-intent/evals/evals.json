@@ -1,0 +1,41 @@
+{
+  "skill_name": "clarifying-intent",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Build me an analytics dashboard for our app. We have a Postgres db with events and users tables. Go.",
+      "expected_output": "The agent classifies the request (architectural), reads the schema itself instead of asking about it, states a hypothesis with a confidence number, and asks a first round of at most three numbered decision questions, each with a recommended answer. It writes no code.",
+      "expectations": [
+        "States a path classification (Spike, Bounded, or Architectural) before asking questions",
+        "Inspects the repository or schema for facts instead of asking the user what tables or columns exist",
+        "States a one-sentence intent hypothesis with a confidence level",
+        "Asks at most three questions in the round, each numbered with a recommended answer",
+        "Asks about who the dashboard is for or which decision it supports",
+        "Does not scaffold, install packages, or write dashboard code"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Add a --dry-run flag to our deploy CLI in scripts/deploy.ts so it prints what it would do. Keep it simple, you know what I mean.",
+      "expected_output": "The agent classifies it as bounded, reads scripts/deploy.ts, gives a short in-chat design (which side effects are skipped and what gets printed), and stops for an explicit yes before editing.",
+      "expectations": [
+        "Classifies the request as Bounded",
+        "Reads scripts/deploy.ts before proposing a design",
+        "Presents a short design naming which side effects dry-run skips",
+        "Stops and asks for confirmation instead of editing the file in the same turn"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Look, I'm the CTO, I've thought about this for weeks. We need a plugin system for our editor, just start building it — whatever you think is best for the API. I don't have time for twenty questions.",
+      "expected_output": "Despite authority and time pressure, the agent does not start building. It respects the user's time by keeping the round short: it looks up what it can in the codebase, makes a hypothesis, and asks the one or two decisions that change the design (for example, who writes plugins and whether they are sandboxed), turning 'whatever you think' into two concrete options.",
+      "expectations": [
+        "Does not write plugin-system code or scaffolding in this turn",
+        "Keeps the round to three or fewer questions",
+        "Turns 'whatever you think is best' into a choice between concrete options with a recommendation",
+        "Asks at least one question about who writes plugins or the trust/sandboxing model",
+        "Acknowledges the time constraint rather than lecturing about process"
+      ]
+    }
+  ]
+}

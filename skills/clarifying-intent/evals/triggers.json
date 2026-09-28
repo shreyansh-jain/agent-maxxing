@@ -1,0 +1,15 @@
+[
+  {"query": "i want to build a habit tracker app, where do we start", "should_trigger": true},
+  {"query": "grill me on this idea: we move all our cron jobs to a queue-based scheduler", "should_trigger": true},
+  {"query": "can you add notifications to the app? users keep asking for them", "should_trigger": true},
+  {"query": "we need some kind of admin panel for support staff, can you set that up", "should_trigger": true},
+  {"query": "stress-test my thinking before I commit the team to rewriting the billing service in Go", "should_trigger": true},
+  {"query": "make the onboarding better", "should_trigger": true},
+  {"query": "is it even possible to stream partial results from our lambda to the browser? quick and dirty is fine", "should_trigger": true},
+  {"query": "we agreed on the scope in the thread above, now write it up as a proper spec doc in docs/specs", "should_trigger": false},
+  {"query": "here is the approved spec for the export feature, break it into implementation tasks", "should_trigger": false},
+  {"query": "review this implementation plan and tell me what's missing before we start", "should_trigger": false},
+  {"query": "fix the typo in the README install section", "should_trigger": false},
+  {"query": "what does the useSession hook in src/auth do?", "should_trigger": false},
+  {"query": "the login test is failing after my last change, figure out why", "should_trigger": false}
+]

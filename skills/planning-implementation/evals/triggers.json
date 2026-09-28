@@ -1,0 +1,14 @@
+[
+  {"query": "spec's approved, can you write the implementation plan with tasks and tests", "should_trigger": true},
+  {"query": "break the notifications epic into tickets we can hand to agents", "should_trigger": true},
+  {"query": "this migration to the new router feels huge, how should I sequence it", "should_trigger": true},
+  {"query": "turn docs/specs/audit-log.md into a step by step plan", "should_trigger": true},
+  {"query": "plan out adding multi-tenant support across the api and worker so we can do it over a few sessions", "should_trigger": true},
+  {"query": "give me a task breakdown for the dark mode feature, ordered so each piece is shippable", "should_trigger": true},
+  {"query": "here's our plan for the search rewrite, poke holes in it", "should_trigger": false},
+  {"query": "execute the plan in docs/plans/2026-09-12-export.md task by task", "should_trigger": false},
+  {"query": "I have an idea for a new feature but I'm not sure what it should do yet", "should_trigger": false},
+  {"query": "write a spec for the refund flow", "should_trigger": false},
+  {"query": "what's the plan for today's standup? summarise my open PRs", "should_trigger": false},
+  {"query": "set up a github actions pipeline with lint, test and deploy stages", "should_trigger": false}
+]

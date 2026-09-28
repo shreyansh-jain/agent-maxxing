@@ -1,0 +1,14 @@
+[
+  {"query": "review my implementation plan in docs/plans/queue-rewrite.md before I start", "should_trigger": true},
+  {"query": "poke holes in this design doc for the new permissions model", "should_trigger": true},
+  {"query": "sanity check: we plan to shard the orders table by region next sprint, here's the doc", "should_trigger": true},
+  {"query": "is this architecture over-engineered? plan pasted below", "should_trigger": true},
+  {"query": "eng review this spec before we commit the team to it", "should_trigger": true},
+  {"query": "I wrote a plan for the caching layer, what am I missing?", "should_trigger": true},
+  {"query": "review the diff on my branch before I open the PR", "should_trigger": false},
+  {"query": "threat model our existing login endpoint for vulnerabilities", "should_trigger": false},
+  {"query": "write a plan for adding rate limiting to the api", "should_trigger": false},
+  {"query": "a reviewer left 12 comments on my PR, help me work through them", "should_trigger": false},
+  {"query": "which of these three database options should we pick? no plan yet, just exploring", "should_trigger": false},
+  {"query": "implement task 3 from the plan", "should_trigger": false}
+]
