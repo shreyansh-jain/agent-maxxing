@@ -1,0 +1,14 @@
+[
+  {"query": "which parts of this codebase should we refactor first? we have one sprint for cleanup", "should_trigger": true},
+  {"query": "help me build a tech debt backlog for the platform team", "should_trigger": true},
+  {"query": "how do I convince my PM that we need time to fix the billing module", "should_trigger": true},
+  {"query": "every change to the checkout code takes forever and breaks something, how do we get out of this", "should_trigger": true},
+  {"query": "we're cutting corners to hit the deadline, how should we track the shortcuts we take", "should_trigger": true},
+  {"query": "find the hotspots in this repo — files that change a lot and are huge", "should_trigger": true},
+  {"query": "refactor this 2000-line legacy class safely, it has no tests", "should_trigger": false},
+  {"query": "clean up the code in my last commit, it's a bit messy", "should_trigger": false},
+  {"query": "upgrade react from 17 to 18", "should_trigger": false},
+  {"query": "review my PR for code quality issues", "should_trigger": false},
+  {"query": "write an ADR for choosing event sourcing", "should_trigger": false},
+  {"query": "our CI is slow, can you speed up the pipeline", "should_trigger": false}
+]

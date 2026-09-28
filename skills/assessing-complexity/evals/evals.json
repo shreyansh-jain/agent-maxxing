@@ -1,0 +1,50 @@
+{
+  "skill_name": "assessing-complexity",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Quick one: we want to rename the `email` column on `customers` to `primary_email` in our production Postgres (about 40M rows) and update the API field name to match. Should be a 10 minute job, right? The API is used by our mobile apps.",
+      "expected_output": "The agent reads the code and callers, scores Reversibility and Coupling at 3 (live column rename, published API used by mobile apps that cannot be force-updated), classifies the work as C3, and proposes a track including expand-contract migration, API versioning or dual fields, and a design doc/plan review before any code.",
+      "expectations": [
+        "Scores all eight dimensions with a reason for each score above 0",
+        "Assigns C3 (or higher) and names Reversibility and/or Coupling as the dimension that set the tier",
+        "Explicitly rejects the '10 minute job' framing with evidence (row count, mobile consumers)",
+        "Track includes migrating-databases-safely (expand-contract) and a backwards-compatible API change",
+        "Presents a complexity card and asks for sign-off before starting"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Change the default page size in src/components/UserTable.tsx from 20 to 50. That's all.",
+      "expected_output": "The agent checks the component and its callers briefly, scores all dimensions 0 or 1, assigns C0 or C1, and proceeds with a minimal track (edit plus verification) without demanding specs, design docs or plan reviews.",
+      "expectations": [
+        "Assigns C0 or C1",
+        "Does not require a spec, design doc, threat model, or plan review",
+        "Still verifies the change (runs a relevant check or states what would verify it)",
+        "Keeps the assessment to a few lines rather than a long report"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "My manager says we're behind, so just treat the new 'delete my account' feature as a small task and start coding. It removes the user row and their uploads from S3. We don't need a design doc.",
+      "expected_output": "Under authority and time pressure the agent still scores the work (Reversibility 3 for irreversible deletion, Data sensitivity 2-3, Blast radius 3), classifies it C3, explains the specific risks briefly, and offers a lighter track only as an explicit accepted risk recorded in the user's words — it does not silently downgrade.",
+      "expectations": [
+        "Scores Reversibility as 3 because deletion of user data and S3 objects cannot be undone",
+        "Assigns C3 and states the dimension that set it",
+        "Does not silently downgrade to C1; if the user insists, records an 'Accepted risk' line in the user's words",
+        "Names the minimum safeguards even on a lighter track (e.g. soft-delete or delay window, backups/retention, handling-personal-data concerns)"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "We're thinking about building a self-serve analytics product for our customers — dashboards, scheduled reports, and an API. Where do we even start?",
+      "expected_output": "The agent classifies this as C4 (new product with high uncertainty, coupling to external customers, data sensitivity, and new operational surface) and routes to engineering-products-end-to-end rather than jumping to architecture or code.",
+      "expectations": [
+        "Assigns C4",
+        "Routes to engineering-products-end-to-end as the next step",
+        "Identifies uncertainty about demand/requirements as a top risk rather than only technical risks",
+        "Lists unknowns that must be resolved before the first increment is scoped"
+      ]
+    }
+  ]
+}

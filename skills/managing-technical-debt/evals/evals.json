@@ -1,0 +1,39 @@
+{
+  "skill_name": "managing-technical-debt",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Our Rails app feels like it's rotting. Everyone complains but nobody knows where to start. Can you figure out what we should refactor first?",
+      "expected_output": "The agent gathers evidence (hotspot script, bug-fix commits in hot files) before recommending, builds ledger entries with interest, blast radius, principal and trigger, and ranks by interest rather than ugliness.",
+      "expectations": [
+        "Runs the hotspot analysis (scripts/hotspots.py or equivalent git log churn) before recommending",
+        "Backs each candidate with at least one number (churn, bug-fix count, incidents)",
+        "Produces ledger entries including interest and principal for each item",
+        "Ranks by interest paid, and explicitly deprioritizes stable rarely-changed code",
+        "Attaches top items to upcoming work or an owner"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "The payments module is a mess. Let's just rewrite it from scratch this sprint, I've wanted to for ages.",
+      "expected_output": "The agent pushes back on a big-bang rewrite, quantifies the module's interest, and proposes a strangler/incremental plan with tests first, only recommending a rewrite if evidence supports it.",
+      "expectations": [
+        "Does not start a from-scratch rewrite",
+        "Asks for or gathers evidence of the module's cost (churn, bugs, incidents)",
+        "Proposes an incremental or strangler approach behind a seam, with characterization tests first",
+        "States what would make a rewrite justified"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "We need to hit the launch date, so we're going to skip the idempotency handling on the order webhook for now. Can you just implement the happy path?",
+      "expected_output": "The agent implements or agrees to the deliberate shortcut but records it as a deliberate-prudent debt entry with its interest (duplicate orders risk), blast radius, and a concrete repayment trigger/date before proceeding, and makes the risk visible to the user.",
+      "expectations": [
+        "Records the shortcut as a debt ledger entry before or alongside implementation",
+        "Classifies it as deliberate debt with a repayment trigger or date",
+        "States the concrete interest or risk (e.g. duplicate order processing on retries)",
+        "Makes the trade-off visible in stakeholder terms"
+      ]
+    }
+  ]
+}

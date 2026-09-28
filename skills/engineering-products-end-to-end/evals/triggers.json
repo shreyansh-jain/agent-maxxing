@@ -1,0 +1,14 @@
+[
+  {"query": "we're starting a new product line — a self-serve API gateway for our customers. act as the principal engineer and run it from zero", "should_trigger": true},
+  {"query": "plan the whole build of our marketplace MVP: discovery, architecture, launch, the lot", "should_trigger": true},
+  {"query": "the complexity assessment came back C4 for the payments platform, what now?", "should_trigger": true},
+  {"query": "how would a staff engineer take this internal tool from idea to production with 3 teams involved", "should_trigger": true},
+  {"query": "we have 2 quarters to build a new mobile banking app, lay out the phases and gates", "should_trigger": true},
+  {"query": "lead the rebuild of our notification platform end to end, including launch readiness", "should_trigger": true},
+  {"query": "add a dark mode toggle to the settings page", "should_trigger": false},
+  {"query": "draw the architecture for the ingestion service with the options and trade-offs", "should_trigger": false},
+  {"query": "what's the smallest version of the referral feature we could ship in two weeks", "should_trigger": false},
+  {"query": "how risky is it to add a new column to the orders table", "should_trigger": false},
+  {"query": "prod checkout is throwing 500s since the last deploy, help", "should_trigger": false},
+  {"query": "write the postmortem for yesterday's outage", "should_trigger": false}
+]

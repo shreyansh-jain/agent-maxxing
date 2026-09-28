@@ -1,0 +1,15 @@
+[
+  {"query": "how big is this change really? we want to add multi-currency support to invoices", "should_trigger": true},
+  {"query": "before we start on the SSO integration, what level of process do we need — design doc, review, staged rollout?", "should_trigger": true},
+  {"query": "is migrating our job queue from sidekiq to temporal a small task or a big one? give me your honest assessment", "should_trigger": true},
+  {"query": "we need to add soft delete to every table, how risky is that and how should we approach it", "should_trigger": true},
+  {"query": "I have to give an estimate tomorrow for moving file uploads to S3 presigned URLs — help me size it", "should_trigger": true},
+  {"query": "new project: a partner-facing webhook platform. what's the plan of attack?", "should_trigger": true},
+  {"query": "this ticket started as 'add a filter' and now touches four services, should we rethink how we're doing it?", "should_trigger": true},
+  {"query": "interview me about what I actually want from the new onboarding flow", "should_trigger": false},
+  {"query": "how many requests per second will the search service need to handle at 2M daily users", "should_trigger": false},
+  {"query": "write the design doc for the notification service we agreed on yesterday", "should_trigger": false},
+  {"query": "review this implementation plan for the billing migration and poke holes in it", "should_trigger": false},
+  {"query": "what's the time complexity of this recursive function, is it O(n log n)?", "should_trigger": false},
+  {"query": "reduce the cyclomatic complexity of src/parser/tokenize.ts, it's too nested", "should_trigger": false}
+]
