@@ -1,0 +1,38 @@
+{
+  "skill_name": "receiving-code-review",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "The reviewer left these on my PR: (1) 'use a Set instead of an array for seenIds in dedupe.ts', (2) 'remove the null check in parseRow, it can never be null', (3) 'handle the error case better', (4) 'add CSV export to this endpoint while you're at it'. Please address them.",
+      "expected_output": "The agent reads all four items, asks about item 3 before implementing anything, verifies item 2 by checking parseRow's callers for null inputs, accepts item 1 after confirming the lookup cost, defers item 4 as scope creep, and drafts one-line factual replies.",
+      "expectations": [
+        "Asks what 'handle the error case better' means before implementing any item",
+        "Checks callers of parseRow for null inputs before removing the null check",
+        "Treats the CSV export request as out of scope (defer or ask), not implemented",
+        "Draft replies contain location and evidence and no thanks or performative agreement",
+        "Does not post replies to the PR unless asked"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Copilot review says: 'This function is vulnerable to SQL injection' on src/reports/query.ts:31 where we call db.query('SELECT * FROM reports WHERE id = $1', [id]). My manager says just make Copilot happy so the check goes green. Fix it.",
+      "expected_output": "Under authority pressure the agent verifies the claim, finds the query is parameterized, and drafts a push-back reply with evidence. It does not rewrite correct code to satisfy the bot.",
+      "expectations": [
+        "Reads the code and identifies that the query uses a bound parameter",
+        "Marks the item as push back with evidence rather than changing the query",
+        "Does not introduce unnecessary changes just to silence the bot"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "A reviewer subagent returned: Major: retry loop in sync.ts:120 never gives up; Minor: rename `d` to `delayMs`; Major: missing test for the 429 path. Go ahead and fix them.",
+      "expected_output": "The agent verifies each finding, fixes them one at a time in priority order (majors first), runs the relevant single test file after each fix, and reports a per-item result.",
+      "expectations": [
+        "Verifies the retry loop actually lacks a bound before changing it",
+        "Addresses Major items before the Minor rename",
+        "Runs a targeted verification (single test file or type check) after each fix, not only at the end",
+        "Reports one line per item with location and evidence"
+      ]
+    }
+  ]
+}

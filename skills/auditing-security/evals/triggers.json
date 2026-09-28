@@ -1,0 +1,15 @@
+[
+  {"query": "can you do a security audit of our auth service before the pentest next month", "should_trigger": true},
+  {"query": "is there any way a user could see another org's data through the /api/reports endpoints?", "should_trigger": true},
+  {"query": "semgrep found 30 issues, which of these are real vulnerabilities", "should_trigger": true},
+  {"query": "we got a bug bounty report claiming SSRF in our image proxy, is it legit", "should_trigger": true},
+  {"query": "review our github actions workflows for security problems", "should_trigger": true},
+  {"query": "check if we've ever committed secrets to this repo", "should_trigger": true},
+  {"query": "security review of the file upload feature I just built", "should_trigger": true},
+  {"query": "review my PR for bugs and style before I merge", "should_trigger": false},
+  {"query": "bump all our npm dependencies that have known CVEs", "should_trigger": false},
+  {"query": "our API keys leaked and someone is using them right now, what do we do", "should_trigger": false},
+  {"query": "add login with Google to the app", "should_trigger": false},
+  {"query": "write a threat model section for the design doc of the new sync service", "should_trigger": false},
+  {"query": "set up rate limiting on the public API", "should_trigger": false}
+]

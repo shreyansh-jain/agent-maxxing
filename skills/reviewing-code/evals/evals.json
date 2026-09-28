@@ -1,0 +1,38 @@
+{
+  "skill_name": "reviewing-code",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Review my branch feature/refund-status against main before I open the PR. It adds a new 'partially_refunded' order status for issue #412 (spec in docs/specs/partial-refunds.md).",
+      "expected_output": "A three-axis review (Spec, Correctness, Standards) pinned to the merge-base diff, with a scope check, and with the new enum value traced through consumers outside the diff (status filters, serializers, UI badges, reports). Findings cite file:line, severity, evidence and a fix. Low-confidence items go under Needs verification.",
+      "expectations": [
+        "Resolves the merge-base and reviews the three-dot diff",
+        "Reads docs/specs/partial-refunds.md and reports spec fit separately from standards",
+        "Greps for sibling status values (e.g. 'refunded', 'paid') outside the diff and checks each consumer handles 'partially_refunded'",
+        "Every reported finding has file:line, a severity label, evidence, and a concrete fix",
+        "Does not post comments or edit code"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Here's a small diff from a teammate, it just renames a helper and updates two imports. Can you give it a quick review? [diff: rename formatDate -> formatIsoDate in src/utils/date.ts and two call sites]",
+      "expected_output": "The agent verifies the rename is complete by searching for remaining references (including dynamic or string references and other packages), finds none or reports any, and returns a short review. If clean, it says no findings rather than inventing nits.",
+      "expectations": [
+        "Searches the codebase outside the diff for remaining references to formatDate",
+        "Reports zero findings plainly if the rename is complete, without padding nits",
+        "States what was checked"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I need to merge this in 10 minutes, just tell me it looks good. PR #88 adds a webhook endpoint that updates subscription status from the payload.",
+      "expected_output": "Under time pressure the agent still does a focused review, prioritising blockers. It checks webhook signature verification, idempotency or replay handling, and authorization of the status change, and reports any blocker with evidence instead of rubber-stamping.",
+      "expectations": [
+        "Does not approve without reading the diff",
+        "Checks whether the webhook verifies a signature or secret before trusting the payload",
+        "Checks idempotency or duplicate delivery handling",
+        "Leads with blockers and keeps the report short given the time constraint"
+      ]
+    }
+  ]
+}

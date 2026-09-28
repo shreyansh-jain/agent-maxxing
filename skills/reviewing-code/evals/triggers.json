@@ -1,0 +1,14 @@
+[
+  {"query": "can you review PR #231 before I merge it", "should_trigger": true},
+  {"query": "look over the changes on my branch vs main and tell me if anything is broken", "should_trigger": true},
+  {"query": "the subagent finished task 3 of the plan, check its work before we continue", "should_trigger": true},
+  {"query": "here's a diff, any bugs? (pasted diff of payment retry logic)", "should_trigger": true},
+  {"query": "review the last 4 commits for correctness and whether they follow our CONTRIBUTING rules", "should_trigger": true},
+  {"query": "does this implementation actually match the spec in docs/specs/export.md? review the branch", "should_trigger": true},
+  {"query": "the reviewer left 9 comments on my PR, help me work through them", "should_trigger": false},
+  {"query": "do a full security audit of our auth service, we have a pentest next month", "should_trigger": false},
+  {"query": "review this implementation plan before I start coding", "should_trigger": false},
+  {"query": "this function works but it's a mess, can you clean it up", "should_trigger": false},
+  {"query": "write a PR description for my branch", "should_trigger": false},
+  {"query": "why is the checkout test failing on my branch", "should_trigger": false}
+]

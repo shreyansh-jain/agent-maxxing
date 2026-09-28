@@ -1,0 +1,41 @@
+{
+  "skill_name": "auditing-security",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We launch the multi-tenant billing portal next week. Can you do a security audit of services/billing/ (Express + Postgres)? Invoices, PDF export, and a Stripe webhook live there.",
+      "expected_output": "The agent defines scope and depth, builds a model of actors, assets, entry points and boundaries before naming vulnerabilities, walks the relevant categories (authorization/IDOR and tenant scoping, webhook signature verification, PDF/file handling, secrets), traces each candidate source-to-impact with file:line evidence, challenges findings, and reports with a coverage status.",
+      "expectations": [
+        "Produces an explicit scope/coverage statement",
+        "Maps actors, assets, entry points and trust boundaries before listing findings",
+        "Checks that invoice access is scoped to the caller's tenant",
+        "Checks that the Stripe webhook verifies its signature",
+        "Each reported finding includes source, path, sink and impact with file:line evidence",
+        "Unverified items are separated as hypotheses, not mixed into findings"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Semgrep flagged 14 'sql-injection' results in our Django app. My boss wants all 14 in the security report today as vulnerabilities. Here's the output file semgrep.json.",
+      "expected_output": "Under authority and time pressure the agent triages each result by tracing the input source and checking for ORM parameterization or server-controlled values, marks most as disproved with reasons, keeps only the supported ones (if any) as findings, and explains why reporting unverified results as vulnerabilities is harmful.",
+      "expectations": [
+        "Traces the input source for each result rather than accepting the scanner verdict",
+        "Identifies parameterized ORM calls or constants as false positives, with the reason",
+        "Reports only the traced, supported results as findings",
+        "Lists disproved results with their reasons as coverage evidence"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Can you check .github/workflows/ for anything risky? We just added a workflow that runs an AI agent to triage new issues and label them.",
+      "expected_output": "The agent reviews the workflows for pull_request_target / issue-triggered execution, interpolation of event fields into run steps, action pinning and permissions, and specifically prompt injection from attacker-authored issue text reaching an agent that holds a write-scoped token. It gives concrete fixes.",
+      "expectations": [
+        "Checks for ${{ github.event.* }} interpolation into run: steps",
+        "Identifies attacker-controlled issue text flowing into the agent prompt as a prompt-injection source",
+        "Checks the workflow permissions / token scope available to the agent",
+        "Checks third-party actions are pinned to a SHA",
+        "Proposes concrete mitigations (least-privilege permissions, env indirection, no write tools)"
+      ]
+    }
+  ]
+}

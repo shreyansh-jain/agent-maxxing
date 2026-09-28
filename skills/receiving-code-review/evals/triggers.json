@@ -1,0 +1,14 @@
+[
+  {"query": "reviewer left 12 comments on PR #57, can you go through them and fix what makes sense", "should_trigger": true},
+  {"query": "coderabbit flagged a bunch of stuff on my PR, half of it looks wrong to me", "should_trigger": true},
+  {"query": "my lead says the caching approach is wrong and I should use redis instead, here's his comment, what do you think", "should_trigger": true},
+  {"query": "address the review feedback: 1) rename the handler 2) add tests for empty input 3) split the file", "should_trigger": true},
+  {"query": "the review subagent came back with 3 majors and 5 minors, work through them", "should_trigger": true},
+  {"query": "the reviewer wants me to add pagination 'properly' to an internal endpoint, is that worth doing?", "should_trigger": true},
+  {"query": "review my PR before I send it to the team", "should_trigger": false},
+  {"query": "the CI checks on my PR are failing, fix them", "should_trigger": false},
+  {"query": "write a reply to the customer who reported the export bug", "should_trigger": false},
+  {"query": "how should I give constructive feedback on a junior's PR", "should_trigger": false},
+  {"query": "resolve the merge conflicts on my PR branch", "should_trigger": false},
+  {"query": "write the PR description for this branch", "should_trigger": false}
+]
