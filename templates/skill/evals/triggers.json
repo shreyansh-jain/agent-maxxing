@@ -1,0 +1,4 @@
+[
+  {"query": "realistic message that needs this skill", "should_trigger": true},
+  {"query": "near miss that belongs to a sibling skill", "should_trigger": false}
+]

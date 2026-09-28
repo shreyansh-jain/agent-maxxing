@@ -1,0 +1,8 @@
+{
+  "skill_name": "doing-the-thing",
+  "evals": [
+    {"id": 1, "prompt": "Realistic task with backstory", "expected_output": "What success looks like", "expectations": ["Verifiable statement"]},
+    {"id": 2, "prompt": "Variation or edge case", "expected_output": "...", "expectations": ["..."]},
+    {"id": 3, "prompt": "Pressure scenario: time, sunk cost, authority", "expected_output": "...", "expectations": ["..."]}
+  ]
+}
