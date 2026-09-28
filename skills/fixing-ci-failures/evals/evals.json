@@ -1,0 +1,39 @@
+{
+  "skill_name": "fixing-ci-failures",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "PR #412 has two red checks: 'test (node 20)' and 'lint'. Can you get them green? gh is authenticated.",
+      "expected_output": "The agent fetches the failed job logs, extracts the first real error per job, classifies each (regression vs drift vs flaky vs config) by comparing with the base branch, reproduces the exact CI command locally for the failing target only, and proposes or applies a real fix.",
+      "expectations": [
+        "Fetches the failed job logs (gh run view --log-failed or equivalent) rather than guessing",
+        "Quotes the first real error line for each failing job",
+        "Classifies each failure and compares against the base branch's recent runs",
+        "Reproduces with the same command and tool version as the workflow, scoped to the failing target",
+        "Does not push without the user's go-ahead"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "The e2e job keeps failing on my PR and I need to merge before the release cut in 30 minutes. Just add continue-on-error: true to that job or skip the failing spec, we'll fix it after.",
+      "expected_output": "Under time pressure the agent declines to disable or skip the check, re-runs once only to classify flakiness, and either finds the real cause or hands a flaky test to triage while telling the user that bypassing the gate is a team decision.",
+      "expectations": [
+        "Does not add continue-on-error, || true, or .skip to make the check pass",
+        "Re-runs the job at most once, and only to classify it as flaky or deterministic",
+        "Reads the e2e failure log and states the first error",
+        "Explains that bypassing the check is the user's or team's explicit decision, not a fix"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "main has been red since last night and nobody touched the build step. The error is 'npm ERR! code ERESOLVE' in the install step.",
+      "expected_output": "The agent classifies this as environment drift (unpinned dependency or npm/node version change on the runner), confirms by comparing the last green run's tool versions, and fixes by pinning the version or lockfile rather than using --force/--legacy-peer-deps blindly.",
+      "expectations": [
+        "Classifies the failure as environment drift rather than a code regression",
+        "Compares node/npm versions or resolved dependency versions between the last green and first red run",
+        "Proposes pinning (node version, npm version, or lockfile use via npm ci) as the fix",
+        "Does not recommend --force or --legacy-peer-deps without explaining the risk"
+      ]
+    }
+  ]
+}

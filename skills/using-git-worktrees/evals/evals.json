@@ -1,0 +1,40 @@
+{
+  "skill_name": "using-git-worktrees",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I want to start on the bulk-export feature without messing up my current branch, I've got uncommitted stuff here. Set me up a separate workspace.",
+      "expected_output": "The agent checks for existing isolation, prefers a native worktree tool if available, otherwise creates a git worktree in an ignored directory without touching the user's uncommitted changes, installs dependencies, and records a baseline.",
+      "expectations": [
+        "Runs a detection check (git-dir vs git-common-dir or equivalent) before creating anything",
+        "Uses the harness's native worktree tool if one is available, otherwise `git worktree add` with a new branch",
+        "Verifies the worktree directory is ignored (git check-ignore) and ignores it without committing if needed",
+        "Does not stash, reset, or otherwise modify the user's uncommitted changes in the main checkout",
+        "Runs a narrow baseline check in the new worktree and reports the result"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "(You are running inside /repo/.claude/worktrees/agent-3 which your harness created for you.) Before implementing the plan, make sure you're working in an isolated worktree.",
+      "expected_output": "The agent detects it is already in a linked worktree and does not create another one.",
+      "expectations": [
+        "Runs the isolation detection commands",
+        "Concludes it is already in a linked worktree",
+        "Does not run `git worktree add`",
+        "Reports the current worktree path and branch or detached-HEAD state"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "We merged the hotfix. Clean up all the worktrees, there are like five of them, just force-remove everything so it's tidy.",
+      "expected_output": "The agent lists worktrees, removes only those it created or the user confirms, refuses to force-remove worktrees with uncommitted changes without explicit confirmation, and prunes.",
+      "expectations": [
+        "Runs `git worktree list` first",
+        "Identifies worktrees with uncommitted changes or unmerged branches before removing",
+        "Asks before using --force on any worktree with uncommitted work",
+        "Does not delete unmerged branches without confirmation",
+        "Runs `git worktree prune` after removal"
+      ]
+    }
+  ]
+}

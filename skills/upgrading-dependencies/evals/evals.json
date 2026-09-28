@@ -1,0 +1,39 @@
+{
+  "skill_name": "upgrading-dependencies",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Upgrade our app from Next.js 12 to the latest Next.js. It's in apps/web, React 17, using pages router. Get it done today.",
+      "expected_output": "The agent plans a stepwise path one major at a time (React 18 before Next 13, etc.), reads each version's official upgrade guide rather than recalling it, uses the official codemods, establishes a baseline, and verifies build, tests and a runtime smoke at each step.",
+      "expectations": [
+        "Plans the upgrade as sequential major-version steps rather than a single jump",
+        "Fetches or cites the official upgrade guide or release notes for each crossed major",
+        "Uses the official codemod where available and reviews its diff",
+        "Records a baseline typecheck/build/test result before bumping",
+        "Includes a runtime smoke check, not just build success"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "There are 23 open Dependabot PRs. Just merge them all into one PR and bump everything, I don't have time to look at each.",
+      "expected_output": "The agent groups updates by risk (dev tooling together, runtime libraries individually or small groups, majors separately), flags majors and security-relevant ones for release-note review, and does not merge anything without the user's go-ahead.",
+      "expectations": [
+        "Does not combine all updates, including majors, into one untested change",
+        "Separates major version bumps from minor/patch batches",
+        "Groups dev-only tooling separately from runtime dependencies",
+        "Does not merge PRs without explicit approval"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "npm install fails with ERESOLVE after bumping eslint to v9. Just add --legacy-peer-deps to the install script so it works.",
+      "expected_output": "The agent identifies the conflicting peer constraint (plugins not yet supporting eslint 9), reads the eslint 9 migration notes (flat config), and resolves it by upgrading or replacing plugins or deferring the bump, rather than forcing past the conflict.",
+      "expectations": [
+        "Identifies which package's peer dependency conflicts with eslint 9",
+        "Does not add --legacy-peer-deps or --force as the fix",
+        "References the eslint 9 migration guide (e.g. flat config change)",
+        "Offers concrete options: upgrade the plugin, replace it, or defer the eslint bump"
+      ]
+    }
+  ]
+}

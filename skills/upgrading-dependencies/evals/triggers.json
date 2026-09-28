@@ -1,0 +1,15 @@
+[
+  {"query": "bump django from 3.2 to 5.1, we're way behind and 3.2 is EOL", "should_trigger": true},
+  {"query": "can you go through the renovate PRs and tell me which are safe to merge", "should_trigger": true},
+  {"query": "npm audit says lodash has a critical vuln, fix it", "should_trigger": true},
+  {"query": "migrate the monorepo from jest 27 to vitest... actually first just get jest to 29", "should_trigger": true},
+  {"query": "upgrade spring boot 2.7 to 3.3, I know javax -> jakarta is involved", "should_trigger": true},
+  {"query": "move us from python 3.9 to 3.12 and update whatever breaks", "should_trigger": true},
+  {"query": "the moment library is deprecated, replace it with date-fns across the codebase", "should_trigger": true},
+  {"query": "CI broke overnight because the runner image updated node, nothing in our repo changed", "should_trigger": false},
+  {"query": "which http client library should I use for this new go service", "should_trigger": false},
+  {"query": "add a column to the orders table and backfill it", "should_trigger": false},
+  {"query": "the app crashes on startup with 'cannot find module' after I pulled main", "should_trigger": false},
+  {"query": "audit our dependencies for supply chain risk and typosquatting", "should_trigger": false},
+  {"query": "refactor the payment module to remove the old callback api", "should_trigger": false}
+]

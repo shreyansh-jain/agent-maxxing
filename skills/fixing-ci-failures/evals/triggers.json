@@ -1,0 +1,15 @@
+[
+  {"query": "my PR checks are failing, can you look at the github actions logs and fix it", "should_trigger": true},
+  {"query": "main went red right after we merged #881, the build job fails at the typecheck step", "should_trigger": true},
+  {"query": "tests pass locally but the gitlab pipeline fails with 'module not found: @app/config'", "should_trigger": true},
+  {"query": "the docker build step in CI started failing with a cache key error after I changed the workflow", "should_trigger": true},
+  {"query": "circleci says 'exit code 137' on the integration job, what's going on", "should_trigger": true},
+  {"query": "the release workflow fails on the publish step with 403 from npm", "should_trigger": true},
+  {"query": "get PR 57 green, the lint check is failing", "should_trigger": true},
+  {"query": "test_checkout fails about one in ten runs even on main, no code changes", "should_trigger": false},
+  {"query": "set up a github actions pipeline for this repo with lint, test and deploy", "should_trigger": false},
+  {"query": "the payment service throws a null pointer in production", "should_trigger": false},
+  {"query": "review my PR before I ask the team", "should_trigger": false},
+  {"query": "upgrade our node version from 18 to 22 across the repo", "should_trigger": false},
+  {"query": "write a commit message and open a PR for these changes", "should_trigger": false}
+]

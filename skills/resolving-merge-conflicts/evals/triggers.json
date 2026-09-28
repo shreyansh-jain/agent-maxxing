@@ -1,0 +1,14 @@
+[
+  {"query": "git pull gave me CONFLICT (content): Merge conflict in src/routes/index.ts, what do I do", "should_trigger": true},
+  {"query": "my rebase onto main stopped halfway with conflicts in 3 files, help me get through it", "should_trigger": true},
+  {"query": "there are <<<<<<< HEAD markers all over settings.py after the merge", "should_trigger": true},
+  {"query": "cherry-picking the hotfix onto release/2.4 conflicts in the migration file", "should_trigger": true},
+  {"query": "package-lock.json has conflicts after merging develop into my branch", "should_trigger": true},
+  {"query": "git stash pop failed with a conflict and now I'm scared I lost my changes", "should_trigger": true},
+  {"query": "write a commit message for the merge I just finished", "should_trigger": false},
+  {"query": "sync my branch with main, run tests, and ship it", "should_trigger": false},
+  {"query": "after merging main everything compiles but test_checkout now fails with a KeyError", "should_trigger": false},
+  {"query": "create a worktree for the release branch so I can work on both at once", "should_trigger": false},
+  {"query": "what's the difference between merge and rebase, which should our team use", "should_trigger": false},
+  {"query": "review the diff between my branch and main for bugs", "should_trigger": false}
+]

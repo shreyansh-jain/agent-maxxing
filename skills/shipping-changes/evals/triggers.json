@@ -1,0 +1,15 @@
+[
+  {"query": "ok the refactor is done, let's ship it", "should_trigger": true},
+  {"query": "land this branch, tests are green on my machine", "should_trigger": true},
+  {"query": "I'm finished with the export feature, what's next to get it merged?", "should_trigger": true},
+  {"query": "cut a 2.4.0 release with a changelog from the merged PRs", "should_trigger": true},
+  {"query": "plan the rollout of the new search backend, I want a canary and an easy rollback", "should_trigger": true},
+  {"query": "push this and open a PR against develop", "should_trigger": true},
+  {"query": "deploy feat/audit-log to staging then prod", "should_trigger": true},
+  {"query": "write a good commit message for these staged changes", "should_trigger": false},
+  {"query": "the PR checks are red, get them passing", "should_trigger": false},
+  {"query": "rebase hit conflicts in src/api/routes.ts, help me resolve them", "should_trigger": false},
+  {"query": "we just deployed and error rates are spiking, roll back?", "should_trigger": false},
+  {"query": "set up a worktree so I can work on the hotfix in parallel", "should_trigger": false},
+  {"query": "review my PR for bugs", "should_trigger": false}
+]

@@ -1,0 +1,14 @@
+[
+  {"query": "set up a git worktree for the payments-refactor branch", "should_trigger": true},
+  {"query": "I need to fix a prod bug but I'm halfway through a feature, can I work on both without stashing", "should_trigger": true},
+  {"query": "before you execute the plan, make sure you're in an isolated workspace", "should_trigger": true},
+  {"query": "I want to run three agents on different branches of the same repo at the same time", "should_trigger": true},
+  {"query": "git worktree list shows a bunch of stale entries, clean them up", "should_trigger": true},
+  {"query": "create a separate checkout of release/3.1 next to my main one", "should_trigger": true},
+  {"query": "split these five independent bug fixes across parallel subagents", "should_trigger": false},
+  {"query": "rebase my branch onto main, there will be conflicts", "should_trigger": false},
+  {"query": "the feature is done and tests pass, merge it and delete the branch", "should_trigger": false},
+  {"query": "commit my changes and open a PR", "should_trigger": false},
+  {"query": "how do git submodules work and should we use them for the shared ui lib", "should_trigger": false},
+  {"query": "undo my last commit but keep the changes", "should_trigger": false}
+]

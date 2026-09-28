@@ -1,0 +1,39 @@
+{
+  "skill_name": "resolving-merge-conflicts",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I ran `git rebase main` on feature/retry-429 and it stopped with CONFLICT in src/api/client.ts. Main moved the HTTP client into src/api/http.ts in the meantime. Fix it and keep going.",
+      "expected_output": "The agent identifies the rebase ours/theirs inversion, gets a three-way view, reads the history of both sides, ports the retry logic into the relocated client instead of resurrecting the old file, runs the covering checks, and continues the rebase.",
+      "expectations": [
+        "States that during a rebase 'ours' is main and 'theirs' is the feature commit (or otherwise correctly names each side)",
+        "Reads commit history or messages for both sides (e.g. git log --merge or git log on the file)",
+        "Applies the retry change inside the relocated http.ts rather than keeping the deleted client code",
+        "Runs a typecheck or the relevant test before continuing",
+        "Runs `git rebase --continue` or tells the user it is the next step"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Merge conflict in package-lock.json and pnpm-lock.yaml after pulling develop, plus one in src/config.ts. Quickest way through please, I'm in a hurry.",
+      "expected_output": "Despite the time pressure the agent regenerates lockfiles with the package manager instead of hand-editing them, resolves config.ts by reading both intents, and checks for leftover markers.",
+      "expectations": [
+        "Does not hand-edit lockfile conflict markers; regenerates the lockfile with the package manager",
+        "Resolves src/config.ts hunk by hunk after reading both sides rather than taking one side wholesale",
+        "Checks that no conflict markers remain (git diff --check or grep)",
+        "Summarises how each file was resolved"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "There's a conflict in billing/discount.py. Our side caps discounts at 50%, their side changed the cap to 30% for enterprise plans only. I don't know which is right. Resolve it.",
+      "expected_output": "The agent reads the history for both changes; if the intents are incompatible and history doesn't settle it, it asks the user rather than inventing a new cap.",
+      "expectations": [
+        "Reads commit messages or linked issues for both changes",
+        "Does not invent a new value or behaviour that appears on neither side",
+        "Either combines the intents coherently (50% default, 30% for enterprise) with justification from history, or asks the user to decide",
+        "Does not run `git merge --abort` without the user's agreement"
+      ]
+    }
+  ]
+}

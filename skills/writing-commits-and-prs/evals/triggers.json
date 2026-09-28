@@ -1,0 +1,14 @@
+[
+  {"query": "commit these changes with a good message", "should_trigger": true},
+  {"query": "can you split my working tree into a few clean commits? i mixed a refactor and the bugfix together", "should_trigger": true},
+  {"query": "write the PR description for feature/bulk-invoice-export, reviewers keep complaining my PRs are unclear", "should_trigger": true},
+  {"query": "draft a conventional commit message for the staged diff but don't commit", "should_trigger": true},
+  {"query": "open a draft pull request for this branch against develop", "should_trigger": true},
+  {"query": "the PR scope changed a lot after review, update the title and body to match what's there now", "should_trigger": true},
+  {"query": "git rebase stopped with conflicts in src/api/routes.ts, help me resolve them", "should_trigger": false},
+  {"query": "sync with main, run the tests, bump the version and land this branch", "should_trigger": false},
+  {"query": "a reviewer left 12 comments on my PR, go through them and fix what's valid", "should_trigger": false},
+  {"query": "review this pull request for bugs before I approve it", "should_trigger": false},
+  {"query": "generate a CHANGELOG entry and release notes for v2.3.0 from the merged PRs", "should_trigger": false},
+  {"query": "set up a worktree so I can work on the hotfix without disturbing my feature branch", "should_trigger": false}
+]

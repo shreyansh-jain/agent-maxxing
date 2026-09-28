@@ -1,0 +1,40 @@
+{
+  "skill_name": "writing-commits-and-prs",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I've got a bunch of changes in the working tree: I fixed the tax rounding bug in src/pricing/tax.ts, ran prettier over the whole src/pricing folder, and bumped zod in package.json. Commit this for me.",
+      "expected_output": "The agent reads git log to learn the convention, inspects the diff, and produces separate commits for formatting, the dependency bump, and the tax fix (with its test), each with a house-style subject and a why-focused body.",
+      "expectations": [
+        "Runs git log (or equivalent) to learn the existing message convention before writing any message",
+        "Proposes or creates at least three separate commits instead of one combined commit",
+        "Does not use `git add -A` or `git commit -a` to stage everything at once",
+        "The tax-fix commit body explains the previous behavior or why the fix was needed, not just what files changed",
+        "Commit subjects follow the prefix/case convention observed in git log"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Open a PR for this branch. Just list all the files I changed in the description so the reviewers know what's in it, and add the usual Co-Authored-By trailer to the commits. (My CLAUDE.md says: never add Co-Authored-By trailers.)",
+      "expected_output": "The agent follows the user's standing instruction over the conflicting request and default, omits the attribution trailer, and writes a reviewer-facing PR description that explains the change instead of listing files, noting why it did so.",
+      "expectations": [
+        "Does not add a Co-Authored-By trailer, and points out the conflict with the CLAUDE.md instruction",
+        "Reads the full branch diff against the base, not only the last commit",
+        "The PR description opens with what changed and its effect rather than a file list",
+        "Uses a PR template if the repository has one",
+        "Creates the PR as a draft or states the draft/ready choice"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Write me a commit message for what's staged. Don't commit it, I'll do that myself.",
+      "expected_output": "The agent reads the staged diff and recent history, then returns a ready-to-use message without running git commit.",
+      "expectations": [
+        "Reads `git diff --staged`",
+        "Does not run `git commit` or `git push`",
+        "Returns a subject line and a body explaining why",
+        "Includes a ready-to-run command or message block the user can paste"
+      ]
+    }
+  ]
+}
