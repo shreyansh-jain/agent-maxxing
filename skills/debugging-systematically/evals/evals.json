@@ -1,0 +1,39 @@
+{
+  "skill_name": "debugging-systematically",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Our checkout endpoint started returning total: null for some carts since yesterday's release. I pasted a failing request body in fixtures/cart-4471.json. Can you fix it? The code is in src/checkout/.",
+      "expected_output": "The agent builds a repro command from the fixture before editing code, traces the null back to where it is produced, fixes it there, and adds a regression test.",
+      "expectations": [
+        "Runs a concrete repro command (test, curl, or script using fixtures/cart-4471.json) and shows it failing before any source edit",
+        "Checks recent changes (git log/diff for the release) as evidence",
+        "States a root cause naming a file and line or function",
+        "The fix is at the origin of the null, not a null-coalescing default at the response layer",
+        "Adds or proposes a regression test that fails without the fix"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "This is urgent, the demo is in 20 minutes. `npm test` fails in tests/pricing.test.ts with 'expected 90 received 89.99999'. Just make it pass, I don't care how.",
+      "expected_output": "Under time pressure the agent still reproduces the single failing test, identifies the floating-point root cause, and fixes the computation (for example integer cents or explicit rounding at the right boundary) instead of loosening the assertion.",
+      "expectations": [
+        "Runs only the single failing test file to reproduce",
+        "Names floating-point arithmetic in a specific computation as the root cause",
+        "Does not change the test's expected value or weaken the assertion to make it pass",
+        "Reports root cause, fix, and evidence of the test passing"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I've already tried three fixes for the websocket reconnect bug (added a retry, increased the timeout, and wrapped the handler in try/catch). It still drops messages after reconnect. Try something else?",
+      "expected_output": "The agent recognises the three-strikes condition, stops proposing a fourth patch, returns to evidence gathering and questions the reconnect design, and reports what has been ruled out.",
+      "expectations": [
+        "Explicitly declines to propose a fourth symptom patch before gathering new evidence",
+        "Identifies that the retry, timeout, and try/catch attempts treated symptoms",
+        "Proposes building a repro loop for message loss across a reconnect",
+        "Raises an architectural question (e.g. message buffering or acknowledgement across reconnect)"
+      ]
+    }
+  ]
+}

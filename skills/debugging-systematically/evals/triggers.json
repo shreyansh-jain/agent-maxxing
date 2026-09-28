@@ -1,0 +1,15 @@
+[
+  {"query": "getting TypeError: cannot read properties of undefined (reading 'id') in UserCard when I open /settings, started after I merged the auth refactor", "should_trigger": true},
+  {"query": "the nightly export job produces a csv with duplicated rows for customers who changed plans, can you find out why", "should_trigger": true},
+  {"query": "p95 latency on /search went from 120ms to 900ms after we bumped the orm to v6, help me figure out what happened", "should_trigger": true},
+  {"query": "pytest tests/test_invoice.py fails with AssertionError on the tax line, it passed last week", "should_trigger": true},
+  {"query": "I fixed the date bug yesterday but QA says it's back for users in Australia", "should_trigger": true},
+  {"query": "the app segfaults on startup on arm64 macs only, here's the crash log", "should_trigger": true},
+  {"query": "debug this: my reducer returns stale state after the second dispatch", "should_trigger": true},
+  {"query": "test_upload passes locally but fails maybe one in five runs on CI with no code changes", "should_trigger": false},
+  {"query": "the GitHub Actions build is red on my PR, can you look at the job logs and get it green", "should_trigger": false},
+  {"query": "prod is down, 500s on every request since the deploy 10 minutes ago, what do we do", "should_trigger": false},
+  {"query": "can you review my PR for bugs before I merge it", "should_trigger": false},
+  {"query": "add a debug logging option to the CLI that prints each HTTP request", "should_trigger": false},
+  {"query": "explain how the retry logic in src/queue/worker.ts works", "should_trigger": false}
+]
