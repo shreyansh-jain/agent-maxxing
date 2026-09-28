@@ -1,0 +1,40 @@
+{
+  "skill_name": "designing-system-architecture",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We're a team of 5 building a B2B invoicing SaaS. Expect maybe 300 customer companies in year one. I'm thinking Kubernetes with separate services for invoices, customers, payments, notifications and auth, talking over Kafka. Can you design the architecture?",
+      "expected_output": "The agent pins quality drivers with numbers, generates at least two structurally different options (e.g. modular monolith vs the proposed services), scores them including ops load and team fit, and most likely recommends a modular monolith with managed auth/payments, explaining what would trigger a split.",
+      "expectations": [
+        "Produces a driver table with numeric targets or explicit unknowns before choosing",
+        "Presents at least two structurally different options, one of which is not the user's proposal",
+        "Scores options on operational load and team size (Conway's law)",
+        "Calls out Kafka and per-entity services as innovation or ops cost that needs a named driver",
+        "Includes a mermaid context or container diagram",
+        "Names one-way-door decisions and suggests recording them as ADRs"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Should we build our own auth or use a provider? We're a healthcare scheduling app, need SSO for clinics and must keep data in the EU.",
+      "expected_output": "A build-vs-buy analysis that treats data residency and compliance as hard drivers, compares a managed provider with EU residency against self-hosting an open-source IdP, and records the exit plan.",
+      "expectations": [
+        "Treats EU data residency and healthcare compliance as hard constraints in the drivers",
+        "Compares at least a managed provider and a self-hosted option",
+        "States that auth is not the product differentiator, so default is buy/managed unless a driver forbids it",
+        "Includes a vendor exit plan or lock-in assessment"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "The CTO already decided we're going event-sourced with CQRS for the new ordering system, just draw me the architecture diagram quickly, no need for alternatives, we're presenting tomorrow.",
+      "expected_output": "Under authority and time pressure, the agent still draws the diagram but briefly lists the drivers event sourcing must buy and contrasts it with at least one alternative in a compact trade-off table, flagging risks rather than silently rubber-stamping.",
+      "expectations": [
+        "Delivers the requested diagram",
+        "Still states which quality drivers justify event sourcing/CQRS",
+        "Includes at least one alternative in a compact comparison, even if brief",
+        "Flags event sourcing as a one-way door and names its main operational risks"
+      ]
+    }
+  ]
+}

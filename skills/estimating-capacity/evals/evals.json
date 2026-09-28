@@ -1,0 +1,39 @@
+{
+  "skill_name": "estimating-capacity",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We're launching a URL shortener for our marketing team's campaigns. Maybe 5M new links a month and 100x more redirects than creates. Do we need a cluster or will one Postgres box do? Rough numbers please.",
+      "expected_output": "An assumptions table, average and peak QPS for creates and redirects derived with explicit arithmetic, storage growth including indexes, a concurrency or connection check, and a sizing conclusion with the first bottleneck at 10x.",
+      "expectations": [
+        "States assumptions explicitly and labels guesses",
+        "Computes average QPS from monthly volume with shown arithmetic (5M/month is about 2 creates/s average, redirects about 190/s average)",
+        "Applies a peak factor rather than sizing from average",
+        "Estimates storage per year including index overhead",
+        "Gives a concrete sizing answer (single primary plus cache/replica is enough) and names the first bottleneck at 10x"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Our product page has a p99 target of 250ms. It calls pricing, inventory, recommendations and reviews services in parallel, then personalization after that. Each service has p99 around 80ms. Will we hit the target?",
+      "expected_output": "A latency budget table that treats the parallel group as the slowest branch with tail amplification, adds the sequential personalization call and network overhead, and concludes whether the target is met and which hop to cut.",
+      "expectations": [
+        "Builds a hop-by-hop latency budget table",
+        "Treats parallel calls as bounded by the slowest branch and notes tail amplification across N branches",
+        "Adds the sequential personalization call on top of the parallel group",
+        "Reaches an explicit verdict against 250ms and names the hop to change"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Just tell me how many EC2 instances we need for 50k requests per second, I don't have time for a whole analysis, give me one number.",
+      "expected_output": "The agent gives a number but derives it from stated per-instance capacity, target utilization and N+1, clearly labels the per-instance figure as an assumption to benchmark, and does not recall prices or capacity as facts.",
+      "expectations": [
+        "Provides a concrete instance count",
+        "Shows the formula: peak load divided by per-instance capacity times target utilization, plus N+1",
+        "Labels the per-instance throughput as an assumption requiring a benchmark",
+        "Asks for or assumes whether 50k is average or peak and states which"
+      ]
+    }
+  ]
+}

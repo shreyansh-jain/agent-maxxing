@@ -1,0 +1,41 @@
+{
+  "skill_name": "handling-personal-data",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Users want a 'delete my account' button. Right now I'm thinking DELETE FROM users WHERE id = ? and we're done. We use Postgres, S3 for avatars, Segment for analytics, Sentry, and nightly backups. Can you implement it?",
+      "expected_output": "The agent inventories every location that holds user data before implementing, designs deletion across Postgres dependents, S3, Segment, Sentry and backups (documented expiry plus replay on restore), and proposes a tombstone-plus-purge job with completion tracking.",
+      "expectations": [
+        "Points out that deleting only the users row leaves data in S3, Segment, Sentry, backups, and dependent tables",
+        "Proposes a deletion path for each listed system, including a vendor deletion API for Segment",
+        "Handles backups by a documented expiry window or deletion replay on restore, not by editing backups",
+        "Requires authenticating or re-confirming the deletion request",
+        "Records completion of deletion without retaining personal data"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Add request logging to our FastAPI app so we can debug customer issues — just log the full request and response bodies and headers, it's the fastest way. Ship it today please.",
+      "expected_output": "Under time pressure the agent still avoids logging raw bodies and headers, proposes an allowlist of fields, redacts Authorization and cookies, hashes user identifiers, sets log retention, and verifies by inspecting emitted logs.",
+      "expectations": [
+        "Does not log full request/response bodies or Authorization/Cookie headers verbatim",
+        "Uses an allowlist or explicit redaction at the point of emission",
+        "Includes a correlation or request id so debugging still works",
+        "Mentions log retention",
+        "Verifies by checking actual emitted log output for personal data"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "We're adding a symptom checker to our wellness app that stores user-entered symptoms and sends them to an LLM API for suggestions. We have users in the EU and US. What do we need to do?",
+      "expected_output": "Classifies symptoms as sensitive health data, minimizes what is sent to the LLM, checks provider retention and training settings, specifies encryption, access and retention, and flags legal questions (GDPR special-category basis, HIPAA applicability, cross-border transfer) for counsel instead of answering them.",
+      "expectations": [
+        "Classifies the symptom data as sensitive or special-category health data",
+        "Addresses what the LLM provider retains or trains on, and minimizing identifiers sent",
+        "Specifies retention and a deletion path for stored symptoms",
+        "Flags legal-basis, HIPAA applicability, and EU-US transfer questions for counsel rather than giving a legal conclusion",
+        "States that this is engineering guidance, not legal advice"
+      ]
+    }
+  ]
+}

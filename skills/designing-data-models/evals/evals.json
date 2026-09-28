@@ -1,0 +1,40 @@
+{
+  "skill_name": "designing-data-models",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Design the Postgres schema for a multi-tenant SaaS invoicing feature: customers, invoices, invoice line items, payments. Tenants are companies. Users need to list unpaid invoices by due date and search invoices by number.",
+      "expected_output": "An access-pattern table first, then DDL with surrogate keys, tenant_id in unique constraints and leading indexes, integer minor-unit or NUMERIC money with currency, timestamptz, foreign keys with ON DELETE choices, CHECK constraints, and indexes mapped to each listed query.",
+      "expectations": [
+        "Lists access patterns before writing DDL",
+        "Includes tenant_id on tenant-owned tables and in unique constraints such as invoice number per tenant",
+        "Uses integer minor units or NUMERIC for money with a currency column, never float",
+        "Uses timestamptz for instants and an appropriate type for due dates",
+        "Declares foreign keys with explicit ON DELETE behaviour and NOT NULL/CHECK constraints",
+        "Maps each index to a listed access pattern, e.g. (tenant_id, status, due_date)"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "We want to use MongoDB for our new order management because it's more flexible. Orders reference customers and products and finance needs monthly revenue reports by product.",
+      "expected_output": "The agent evaluates the access patterns, notes that cross-entity references, integrity and reporting favor relational, and recommends Postgres (optionally JSONB for flexible attributes) unless a pattern demands a document store, explaining the trade-off.",
+      "expectations": [
+        "Evaluates the store choice against listed access patterns rather than the flexibility claim",
+        "Notes the cost of joins/integrity and reporting in a document store for this workload",
+        "Recommends relational with JSONB for flexible fields or explains precisely what would justify MongoDB",
+        "Mentions that a second store is an operational cost"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Quick one, just add the tables for appointments to our schema, the ORM will handle validation so don't bother with constraints. Deadline is today.",
+      "expected_output": "Under time pressure the agent still delivers quickly but includes database-level NOT NULL, foreign keys, and an exclusion or unique constraint to prevent double booking, and handles time zones correctly for scheduled local times.",
+      "expectations": [
+        "Delivers the appointments schema",
+        "Includes database-level constraints despite the instruction, explaining briefly why ORM-only validation is bypassable",
+        "Prevents double booking with a unique or exclusion constraint",
+        "Stores appointment time with time zone information appropriate to scheduling"
+      ]
+    }
+  ]
+}

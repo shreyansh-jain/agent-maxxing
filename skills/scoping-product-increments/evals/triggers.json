@@ -1,0 +1,14 @@
+[
+  {"query": "we have a huge roadmap item called 'collaboration' (comments, mentions, sharing, presence). what's the smallest thing we could ship first?", "should_trigger": true},
+  {"query": "help me define the MVP for a habit tracking app for nurses on night shifts", "should_trigger": true},
+  {"query": "launch is fixed for march 1 and we're clearly over-scoped, help me decide what to cut", "should_trigger": true},
+  {"query": "sales keeps asking for a zapier integration. should we build it and if so what version first?", "should_trigger": true},
+  {"query": "turn this product vision doc into a first increment we can build in 3 weeks", "should_trigger": true},
+  {"query": "prioritise these 9 feature requests for next quarter, we have 2 engineers", "should_trigger": true},
+  {"query": "write the technical spec for the CSV export feature we agreed on yesterday", "should_trigger": false},
+  {"query": "break this approved spec into implementation tasks with files and tests", "should_trigger": false},
+  {"query": "how complex is it to add multi-tenancy to our postgres schema? rough estimate please", "should_trigger": false},
+  {"query": "set up an A/B test for the new onboarding flow and tell me the sample size", "should_trigger": false},
+  {"query": "interview me about what I actually want from this internal tool before you build anything", "should_trigger": false},
+  {"query": "roll the new checkout out to 10% of users behind a flag", "should_trigger": false}
+]

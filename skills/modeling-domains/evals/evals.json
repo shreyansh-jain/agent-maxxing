@@ -1,0 +1,39 @@
+{
+  "skill_name": "modeling-domains",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "In our clinic booking app 'appointment', 'booking', 'slot' and 'visit' are used interchangeably across the code and by the product team. Bugs keep happening around cancellations and no-shows. Help us sort out the model.",
+      "expected_output": "The agent collects terms from code and docs, uses concrete scenarios to separate the concepts, asks the user to resolve ambiguous terms rather than guessing, writes CONTEXT.md glossary entries, and identifies the aggregate that owns the booking invariants.",
+      "expectations": [
+        "Reads the existing code or schema to collect the terms in use",
+        "Poses concrete scenarios (e.g. cancellation vs no-show) to force precise definitions",
+        "Asks the user or domain expert to resolve at least one ambiguous term instead of choosing silently",
+        "Writes or proposes CONTEXT.md entries with definition, what it is not, and banned synonyms",
+        "Names an aggregate with explicit invariants such as a slot booked at most once"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Set up full DDD with aggregates, domain events and a context map for our internal admin panel. It's basically CRUD for 6 tables that support staff edit.",
+      "expected_output": "The agent recognizes the modeling level question and recommends a glossary-only approach, explaining that tactical DDD would add cost without matching rule complexity, while still offering the glossary.",
+      "expectations": [
+        "Explicitly assesses the modeling level before building aggregates",
+        "Recommends against full tactical DDD for a CRUD admin panel with a stated reason",
+        "Still offers a lightweight glossary or naming consistency pass"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Our OrderService has 3,000 lines and Order is just fields with getters/setters. Every job and controller mutates orders directly and we keep getting orders with negative totals. Refactor the model.",
+      "expected_output": "The agent identifies the anemic model, states the invariants, moves enforcement into aggregate methods, removes bypassing setters, introduces Money as a value object, and plans an incremental migration of callers.",
+      "expectations": [
+        "Names the anemic domain model as the problem",
+        "States explicit invariants including total equals sum of lines and non-negative totals",
+        "Moves invariant enforcement into Order methods rather than service checks",
+        "Introduces a value object for money",
+        "Proposes an incremental path for migrating direct mutators"
+      ]
+    }
+  ]
+}

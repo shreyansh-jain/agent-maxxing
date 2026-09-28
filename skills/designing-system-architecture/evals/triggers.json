@@ -1,0 +1,14 @@
+[
+  {"query": "we're starting a new marketplace app, can you help me figure out the overall architecture — services, db, queues, what talks to what", "should_trigger": true},
+  {"query": "should we break our rails monolith into microservices? it's 400k lines and 3 teams now", "should_trigger": true},
+  {"query": "need to pick between kafka, sqs and just postgres LISTEN/NOTIFY for our notification pipeline", "should_trigger": true},
+  {"query": "build vs buy for search: elasticsearch self-hosted, algolia, or postgres full text?", "should_trigger": true},
+  {"query": "we're moving from heroku to aws, how should the new system be laid out", "should_trigger": true},
+  {"query": "draw a C4 container diagram for our payment platform and tell me what's wrong with it", "should_trigger": true},
+  {"query": "how many servers do we need for 20k requests per second at peak", "should_trigger": false},
+  {"query": "design the tables and indexes for the orders and line items", "should_trigger": false},
+  {"query": "what should the REST endpoints for the invoices resource look like", "should_trigger": false},
+  {"query": "add retries and a circuit breaker around our calls to the payment provider", "should_trigger": false},
+  {"query": "write up the design doc for the new sync engine so the team can review it", "should_trigger": false},
+  {"query": "what's the difference between an order and a cart in our domain, the terms are getting mixed up", "should_trigger": false}
+]

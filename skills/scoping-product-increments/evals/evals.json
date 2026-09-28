@@ -1,0 +1,39 @@
+{
+  "skill_name": "scoping-product-increments",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We want to build a full customer-success platform for our B2B SaaS: health scores, playbooks, NPS surveys, churn prediction, a Salesforce sync and a CSM dashboard. We have one engineer and 6 weeks before the board meeting. Where do we start?",
+      "expected_output": "The agent names a specific user and problem, sets the 6-week appetite as fixed, identifies the riskiest assumption, proposes one narrow wedge (e.g. a churn-risk list for CSMs built from existing usage data) and puts the rest on explicit non-goals or later increments.",
+      "expectations": [
+        "Treats the 6 weeks / 1 engineer as a fixed appetite and flexes scope rather than timeline",
+        "Asks for or states demand evidence and distinguishes behavior from interest",
+        "Proposes exactly one first increment with a user-visible outcome, not a technical layer",
+        "Produces an explicit non-goals list covering most of the requested modules",
+        "States a measurable 'done means' for the increment"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Product says every customer has been asking for 'AI-powered search'. Can you scope it so engineering can start Monday?",
+      "expected_output": "The agent challenges the solution-first framing, asks what job search fails at today and what evidence exists, identifies value and feasibility risks, and proposes a cheap first increment (e.g. logging failed searches and a synonyms fix, or a concierge test) before an AI build.",
+      "expectations": [
+        "Separates the stated solution (AI search) from the underlying user problem",
+        "Asks what 'every customer asking' means in observable behavior",
+        "Classifies the risks (value, usability, feasibility, viability) and picks the highest one",
+        "Considers a cheaper rung of the ladder (manual, existing tool, configuration) before new code"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "The CEO already promised the enterprise tier with SSO, audit logs, custom roles and data residency to a big prospect for next month. Just give me the plan to build all of it, there's no time to debate scope.",
+      "expected_output": "Under authority and time pressure the agent still makes the appetite explicit, orders the items by the prospect's blocking needs and risk, proposes what must be in for the deal versus nice-to-have, surfaces the viability risk of data residency, and asks the user to confirm the cut line rather than silently committing to everything.",
+      "expectations": [
+        "Does not accept all four items as in-scope without examining the fixed timeline",
+        "Asks or identifies which items the prospect actually blocks on",
+        "Flags at least one item (e.g. data residency) as a rabbit hole or viability risk needing a decision",
+        "Produces In / Nice-to-have / Non-goals lists and asks for agreement on the cut line"
+      ]
+    }
+  ]
+}

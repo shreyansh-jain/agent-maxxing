@@ -1,0 +1,14 @@
+[
+  {"query": "when the recommendations service is slow our whole homepage times out, how do we stop one dependency taking everything down", "should_trigger": true},
+  {"query": "customers got charged twice when the payment call timed out and we retried, how do we prevent that", "should_trigger": true},
+  {"query": "design the retry and timeout policy for our calls to the shipping carrier api", "should_trigger": true},
+  {"query": "should we add a circuit breaker around the fraud check service", "should_trigger": true},
+  {"query": "our kafka consumer processes duplicates and some messages are lost after crashes, how should this work", "should_trigger": true},
+  {"query": "review this design for failure modes before we build it: api -> queue -> worker -> third party", "should_trigger": true},
+  {"query": "prod is returning 503s right now since 10 minutes ago, help", "should_trigger": false},
+  {"query": "the api p95 went from 200ms to 1.2s, find the slow part", "should_trigger": false},
+  {"query": "add tracing and alerts on error rate for the checkout service", "should_trigger": false},
+  {"query": "how many worker instances do we need for 2000 jobs per second", "should_trigger": false},
+  {"query": "choose between monolith and microservices for the new platform", "should_trigger": false},
+  {"query": "this test fails randomly about one in ten runs on CI", "should_trigger": false}
+]

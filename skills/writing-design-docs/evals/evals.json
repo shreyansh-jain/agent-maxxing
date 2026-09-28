@@ -1,0 +1,40 @@
+{
+  "skill_name": "writing-design-docs",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write a design doc for moving our job queue from Postgres (we poll a jobs table) to something that scales better. We process about 2M jobs/day and the polling query is starting to hurt the primary. Code is in services/worker/.",
+      "expected_output": "A design doc grounded in services/worker/, with measurable goals and non-goals, at least two real alternatives plus extending the current approach (e.g. SKIP LOCKED tuning or partitioning), a comparison table with rejection reasons, failure-path flows, a migration and dual-running plan, rollback, observability and open questions.",
+      "expectations": [
+        "Reads services/worker/ and describes the current polling design with references to code",
+        "Includes 'extend the existing Postgres queue' as a real alternative, not only new systems",
+        "Has a comparison table where each rejected option has a specific reason",
+        "Goals include numbers (throughput, latency, or primary load)",
+        "Includes a migration plan with dual running or draining, and a rollback section",
+        "Lists open questions with owners"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I need an RFC for adding a 'dark mode' toggle to the settings page. Make it thorough, the template has like 15 sections.",
+      "expected_output": "The agent recognises that a local, reversible UI change does not need a full design doc, and recommends a one-pager or a PR description, while offering to write the full doc if the user insists.",
+      "expectations": [
+        "Assesses the change as local and reversible",
+        "Recommends a lighter artifact (PR description or one-pager) rather than filling every section",
+        "Does not pad sections with filler content",
+        "Offers to proceed with the full template if the user still wants it"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Our CTO already decided we're going with DynamoDB for the new events store. Just write the design doc so we can get sign-off by tomorrow, no need to do alternatives.",
+      "expected_output": "Under authority and time pressure, the doc still records alternatives considered (even briefly) with honest trade-offs, states the decision and who made it in the decision log, and surfaces the risks of the chosen option (access patterns, hot partitions, cost, migration) instead of presenting only positives.",
+      "expectations": [
+        "Includes an alternatives section, even if short, with reasons DynamoDB was chosen over them",
+        "Records the decision and decider in the decision log",
+        "Lists risks specific to DynamoDB for this use case (e.g. access pattern design, hot partitions, query flexibility, cost)",
+        "Does not claim goals are met without evidence; marks assumptions"
+      ]
+    }
+  ]
+}

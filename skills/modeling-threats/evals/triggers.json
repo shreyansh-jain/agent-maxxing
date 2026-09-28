@@ -1,0 +1,14 @@
+[
+  {"query": "we're designing SSO + SCIM provisioning for enterprise customers, can you threat model the design before we start", "should_trigger": true},
+  {"query": "what are the security risks of letting users upload arbitrary zip files that we unpack and index?", "should_trigger": true},
+  {"query": "do a STRIDE pass on the new payments service architecture in docs/payments-v2.md", "should_trigger": true},
+  {"query": "our agent will be able to run shell commands and browse the web for the user. how could someone abuse that?", "should_trigger": true},
+  {"query": "the RFC needs a security section, can you figure out the trust boundaries and main threats", "should_trigger": true},
+  {"query": "adding impersonation for support staff so they can log in as a customer — what could go wrong", "should_trigger": true},
+  {"query": "can you review this PR for SQL injection and XSS before I merge it", "should_trigger": false},
+  {"query": "audit src/auth/ for vulnerabilities, I think there's an IDOR somewhere", "should_trigger": false},
+  {"query": "how long should we keep user IP addresses in logs, and how do we handle GDPR deletion requests", "should_trigger": false},
+  {"query": "what happens to our system if the payment provider has an outage for an hour", "should_trigger": false},
+  {"query": "npm audit shows 12 high severity vulnerabilities, help me upgrade the packages", "should_trigger": false},
+  {"query": "write the design doc for the new notification service", "should_trigger": false}
+]

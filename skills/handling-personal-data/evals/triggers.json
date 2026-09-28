@@ -1,0 +1,14 @@
+[
+  {"query": "we got a GDPR data access request from a user, how do we find and export everything we have on them", "should_trigger": true},
+  {"query": "implement account deletion properly, we store stuff in postgres, redis, s3 and mixpanel", "should_trigger": true},
+  {"query": "is it ok to put the user's email as a label on our prometheus metrics?", "should_trigger": true},
+  {"query": "we want to add session replay with fullstory, what do we need to be careful about", "should_trigger": true},
+  {"query": "how long should we retain IP addresses and device ids in our event pipeline", "should_trigger": true},
+  {"query": "our staging db is a copy of prod, someone said that's a problem — what should we do instead", "should_trigger": true},
+  {"query": "design the database schema for orders, line items and refunds", "should_trigger": false},
+  {"query": "threat model our new file upload service", "should_trigger": false},
+  {"query": "scan the repo for hardcoded API keys and secrets", "should_trigger": false},
+  {"query": "add structured logging with trace ids to the checkout service", "should_trigger": false},
+  {"query": "write a privacy policy for our website", "should_trigger": false},
+  {"query": "set up field-level validation for the signup form", "should_trigger": false}
+]

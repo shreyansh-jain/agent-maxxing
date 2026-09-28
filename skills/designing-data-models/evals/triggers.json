@@ -1,0 +1,14 @@
+[
+  {"query": "design the tables for a subscriptions and billing feature in postgres, with plans, subscriptions, invoices", "should_trigger": true},
+  {"query": "review this prisma schema before we run the first migration, anything wrong with keys or indexes?", "should_trigger": true},
+  {"query": "should the product catalog live in dynamodb or postgres given these access patterns", "should_trigger": true},
+  {"query": "how should we model multi-tenancy in the database, tenant_id column or schema per tenant", "should_trigger": true},
+  {"query": "we keep getting duplicate customer rows and orphaned orders, what's wrong with our data model", "should_trigger": true},
+  {"query": "what type should I use for prices and for event timestamps in our schema", "should_trigger": true},
+  {"query": "add a NOT NULL column to the 200M-row events table in production without downtime", "should_trigger": false},
+  {"query": "this query on orders takes 4 seconds, here's the EXPLAIN ANALYZE output", "should_trigger": false},
+  {"query": "what's the difference between a booking and a reservation in our business, the team disagrees", "should_trigger": false},
+  {"query": "design the REST API for the invoices resource", "should_trigger": false},
+  {"query": "set up a read replica for our RDS instance", "should_trigger": false},
+  {"query": "implement GDPR data export and deletion for user accounts", "should_trigger": false}
+]

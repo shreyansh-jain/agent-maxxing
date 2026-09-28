@@ -1,0 +1,42 @@
+{
+  "skill_name": "modeling-threats",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We're adding team workspaces to our SaaS: users can invite others by email, share projects across a workspace, and admins can export all workspace data as CSV. Design doc is in docs/rfcs/workspaces.md. Before we build it, what could go wrong security-wise?",
+      "expected_output": "A threat model grounded in the design doc: data-flow edges, trust boundaries (tenant to shared service, invite links, export), assets, attacker profiles, STRIDE-derived abuse paths ranked by likelihood x impact, specific mitigations with owners, and explicit residual risk.",
+      "expectations": [
+        "Reads docs/rfcs/workspaces.md and lists components and data flows from it, labelling assumptions",
+        "Identifies cross-workspace (tenant) data access as a high-priority abuse path with a specific per-object authorization mitigation",
+        "Covers invite-link threats such as token guessing, replay, or invite to an attacker-controlled email",
+        "Treats the CSV export as a boundary (data leaving access control, or CSV/formula injection)",
+        "Each threat has likelihood and impact ratings with justifications, and mitigations name a location and an owner",
+        "Includes a residual-risk section or states that none remains"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Our support bot is getting new tools: it can look up a customer's orders, issue refunds up to $50, and read our help-center articles plus the customer's previous emails. Can you threat model this quickly? Leadership wants to ship Friday.",
+      "expected_output": "Despite time pressure, the model treats emails and articles as attacker-controlled content, identifies indirect prompt injection leading to unauthorized refunds or cross-customer data exposure, and proposes controls outside the model (scoped credentials, per-customer enforcement, refund caps and confirmations).",
+      "expectations": [
+        "Identifies indirect prompt injection via customer emails or help-center content as a threat",
+        "Identifies the refund tool as the highest-impact tool, with abuse via injection or social engineering",
+        "Mitigations are enforced outside the model (e.g. customer scoping in the tool, per-conversation refund limits, human approval), not only prompt wording",
+        "Addresses cross-customer data leakage through the order lookup tool",
+        "Still produces a ranked list with named residual risks rather than skipping ranking because of the deadline"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Do a STRIDE analysis of our webhook receiver in services/billing/webhooks/ — it takes Stripe events and updates subscription status.",
+      "expected_output": "An evidence-based model of the existing receiver: checks whether signatures and timestamps are verified in code, covers replay, spoofing, out-of-order events, and DoS, and distinguishes existing controls (with file:line) from recommended ones.",
+      "expectations": [
+        "Cites file:line evidence for whether webhook signature verification exists",
+        "Covers replay or timestamp tolerance, and idempotency of event handling",
+        "Addresses tampering or ordering of subscription state (e.g. out-of-order events)",
+        "Distinguishes existing mitigations from recommended ones",
+        "Does not present generic threats with no asset or impact"
+      ]
+    }
+  ]
+}

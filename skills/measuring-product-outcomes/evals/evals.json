@@ -1,0 +1,40 @@
+{
+  "skill_name": "measuring-product-outcomes",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We're shipping a new 'invite your team' step in onboarding next sprint. Add analytics so we know if it works. Frontend is React in web/, backend is Rails in api/.",
+      "expected_output": "The agent defines a primary metric with a precise definition and guardrails before events, designs a small object_action event set, fires the business event server-side after the invite is persisted, keeps PII out, and specifies how to verify events arrive and reconcile with the invites table.",
+      "expectations": [
+        "States a primary metric with numerator, denominator and time window before listing events",
+        "Names at least one guardrail metric",
+        "Uses consistent object_action past-tense event names",
+        "Emits the invite event on the server (api/) after persistence rather than only on a client click",
+        "Excludes emails or names from event properties",
+        "Describes verifying events in a debug view or test and reconciling counts with the database"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Our pricing page A/B test has been running 3 days, variant B is at +9% conversion with p=0.03. Traffic split shows 54,200 vs 49,800 users. PM wants to call it and ship B today.",
+      "expected_output": "The agent flags the sample ratio mismatch as invalidating the readout, explains the peeking problem and the incomplete weekly cycle, and recommends fixing assignment and running to the pre-planned duration rather than shipping.",
+      "expectations": [
+        "Identifies the 54,200 vs 49,800 split as a likely sample ratio mismatch that must be investigated first",
+        "Explains that stopping at the first p<0.05 after 3 days inflates false positives",
+        "Mentions covering at least a full weekly cycle or the pre-registered duration",
+        "Does not recommend shipping B on this evidence"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Just add a trackEvent call to every button and page view in the app so we have all the data for later. Include the user's email so support can look people up.",
+      "expected_output": "The agent pushes back on the firehose and on emails in events, proposes starting from the metrics that decisions need, and offers pseudonymous ids with a lookup path that stays in the source system.",
+      "expectations": [
+        "Declines to put email addresses into analytics events and proposes pseudonymous ids",
+        "Explains the cost of untracked, unowned firehose events",
+        "Asks for or proposes the decisions or metrics the data should serve",
+        "Offers a minimal tracking plan instead of instrumenting every button"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "skill_name": "designing-resilient-systems",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Our checkout calls Stripe to charge, then calls our inventory service, then publishes an order.paid event to Kafka. Last week Stripe was slow for 10 minutes and our whole API went down, and some customers were charged twice. Redesign this flow.",
+      "expected_output": "A failure-mode table per dependency, explicit timeouts and deadline propagation, idempotency keys on the Stripe charge, bulkheads so a slow Stripe cannot exhaust the API, a circuit breaker with a fallback or clear error, and an outbox for the Kafka publish.",
+      "expectations": [
+        "Produces a failure-mode table covering slow, down, errors and duplicate cases for Stripe, inventory and Kafka",
+        "Adds explicit timeouts derived from a latency budget",
+        "Uses an idempotency key for the Stripe charge to stop double charging",
+        "Isolates the Stripe call with a separate pool or concurrency limit and a circuit breaker",
+        "Replaces write-then-publish with a transactional outbox",
+        "Includes tests that inject slow and duplicate failures"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Add retries to our HTTP client wrapper so calls to the partner API stop failing. Just retry 10 times on any error.",
+      "expected_output": "The agent implements retries but only for transient errors, with capped exponential backoff and full jitter, far fewer attempts, a retry budget, idempotency concerns for non-idempotent methods, and a check that no other layer also retries.",
+      "expectations": [
+        "Restricts retries to transient errors (timeouts, connection errors, 429, 503) and excludes 4xx logic errors",
+        "Uses exponential backoff with jitter and a cap",
+        "Pushes back on 10 attempts and recommends a bounded number plus a retry budget",
+        "Flags that POST retries need idempotency keys",
+        "Checks for retries at other layers to avoid multiplication"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Our SQS consumer sometimes processes the same message twice and occasionally a message just disappears after failing a few times. It's a small internal service, can we just turn on exactly-once and move on?",
+      "expected_output": "The agent explains that end-to-end exactly-once is not achievable, makes the handler idempotent with message-ID deduplication, configures a max receive count and a DLQ with an owner and alert, and adds a replay procedure.",
+      "expectations": [
+        "States that exactly-once delivery does not make side effects idempotent and recommends at-least-once plus idempotency",
+        "Implements deduplication by message ID or a natural idempotent operation",
+        "Configures a dead-letter queue with max receive count, an owner and an alert",
+        "Provides a replay procedure for dead-lettered messages"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+[
+  {"query": "'account' means a login in one module and a billing entity in another and it's causing bugs, help me untangle the domain", "should_trigger": true},
+  {"query": "we're building a freight logistics platform, help me figure out the core entities, rules and boundaries before we code", "should_trigger": true},
+  {"query": "where should the boundary between catalog and inventory be, they keep stepping on each other's models", "should_trigger": true},
+  {"query": "run an event storming session with me for the claims process", "should_trigger": true},
+  {"query": "our domain objects are all getters and setters and the services hold every rule, how do we fix this", "should_trigger": true},
+  {"query": "what should be the aggregate root for seat reservations so we never double book", "should_trigger": true},
+  {"query": "design the postgres tables and indexes for the orders module", "should_trigger": false},
+  {"query": "rename this variable to something clearer", "should_trigger": false},
+  {"query": "write an ADR for choosing postgres over mongo", "should_trigger": false},
+  {"query": "should we split our monolith into services, and how would they communicate", "should_trigger": false},
+  {"query": "what should the endpoint signature for creating a booking look like", "should_trigger": false},
+  {"query": "explain how the booking flow currently works in this repo, I'm new here", "should_trigger": false}
+]

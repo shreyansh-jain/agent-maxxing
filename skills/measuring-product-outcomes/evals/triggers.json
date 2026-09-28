@@ -1,0 +1,14 @@
+[
+  {"query": "what metric should we use to know if the new search filters are actually helping people?", "should_trigger": true},
+  {"query": "add posthog tracking for the checkout funnel, we need to see where people drop off", "should_trigger": true},
+  {"query": "how many users do I need for an A/B test if baseline conversion is 3% and I want to detect a 10% relative lift", "should_trigger": true},
+  {"query": "our experiment shows 51/49 split instead of 50/50 with 200k users, is that a problem?", "should_trigger": true},
+  {"query": "we launched dark mode last month, did it move retention at all?", "should_trigger": true},
+  {"query": "clean up our analytics events, half are CamelCase and half are snake_case and nobody knows what they mean", "should_trigger": true},
+  {"query": "add opentelemetry tracing to the payments service so we can see slow spans", "should_trigger": false},
+  {"query": "set up an alert when the API error rate goes above 2%", "should_trigger": false},
+  {"query": "roll out the new editor to 5% of users and ramp up if it's stable", "should_trigger": false},
+  {"query": "which fields in our users table count as personal data under GDPR?", "should_trigger": false},
+  {"query": "decide what the MVP of the referral program should include", "should_trigger": false},
+  {"query": "benchmark the dashboard page load time before and after the refactor", "should_trigger": false}
+]

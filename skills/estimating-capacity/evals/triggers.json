@@ -1,0 +1,14 @@
+[
+  {"query": "back of the envelope: how much storage will our chat messages need after 3 years with 1M users", "should_trigger": true},
+  {"query": "will a single postgres instance handle 8k writes/sec at peak or do we need to shard", "should_trigger": true},
+  {"query": "we expect 10x traffic for black friday, how many pods should we pre-scale to", "should_trigger": true},
+  {"query": "split a 200ms p99 latency budget across gateway, auth, service and db for me", "should_trigger": true},
+  {"query": "estimate bandwidth and cdn egress for serving 500k video views a day", "should_trigger": true},
+  {"query": "how big should our db connection pool be given 3000 rps and 40ms queries", "should_trigger": true},
+  {"query": "our /search endpoint got slow after the last release, profile it and fix it", "should_trigger": false},
+  {"query": "our aws bill jumped 40% last month, find what's driving it", "should_trigger": false},
+  {"query": "should we use microservices or a monolith for the new platform", "should_trigger": false},
+  {"query": "write a k6 load test script for the checkout endpoint", "should_trigger": false},
+  {"query": "add prometheus metrics for request latency to the api", "should_trigger": false},
+  {"query": "design the schema for storing chat messages", "should_trigger": false}
+]

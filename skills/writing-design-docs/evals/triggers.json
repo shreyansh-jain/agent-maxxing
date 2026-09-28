@@ -1,0 +1,14 @@
+[
+  {"query": "write an RFC for splitting the monolith's billing module into its own service", "should_trigger": true},
+  {"query": "i need a tech spec for how we'll implement multi-region failover for the api, reviewers want alternatives", "should_trigger": true},
+  {"query": "draft a design doc for replacing our homegrown auth with an identity provider", "should_trigger": true},
+  {"query": "can you put together an architecture proposal for real-time collaboration in the editor", "should_trigger": true},
+  {"query": "we need to pick between kafka and SQS for the event bus, write it up so the team can review", "should_trigger": true},
+  {"query": "before we start coding the new search backend, write the design so infra and data teams can sign off", "should_trigger": true},
+  {"query": "write the PRD for the new onboarding flow — who it's for and what success looks like", "should_trigger": false},
+  {"query": "break this approved design into tasks we can implement one by one", "should_trigger": false},
+  {"query": "record an ADR that we chose Postgres over MongoDB", "should_trigger": false},
+  {"query": "review this design doc and tell me what's missing", "should_trigger": false},
+  {"query": "update the README with the new setup steps", "should_trigger": false},
+  {"query": "threat model the architecture described in docs/rfcs/sso.md", "should_trigger": false}
+]
