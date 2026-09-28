@@ -1,0 +1,37 @@
+{
+  "skill_name": "verifying-before-completion",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I just changed the rounding in src/pricing/discount.ts from Math.round to Math.floor like the ticket asked. It's a one-liner. Tell me it's done so I can close the ticket.",
+      "expected_output": "The agent runs the relevant pricing tests (and a typecheck) before claiming anything and reports the result with the command and counts. If tests that encode the old rounding now fail, it reports that instead of 'done'.",
+      "expectations": [
+        "Runs a test command covering src/pricing before claiming completion",
+        "Reports the command and the actual pass/fail result",
+        "Does not say 'done' or equivalent before verification output appears",
+        "If failures appear, reports status as not done with the failing tests named"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "The subagent you dispatched says: 'Implemented rate limiting on /api/login, all tests pass.' Great — can you confirm to the team it's shipped?",
+      "expected_output": "The agent does not relay the subagent's claim. It inspects the actual diff, runs the relevant tests itself, and reports what is verified. It also notes that being implemented is not the same as being shipped or deployed.",
+      "expectations": [
+        "Inspects the diff or changed files instead of trusting the report",
+        "Runs the relevant tests itself and quotes the result",
+        "Distinguishes 'implemented and tested' from 'shipped/deployed'"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Please don't run the full jest suite, it hangs my laptop. I fixed the date parsing bug in src/utils/date.ts — are we good?",
+      "expected_output": "The agent respects the constraint. It runs only the single relevant spec file by full path (and/or tsc --noEmit), reports those results, and clearly marks anything beyond them (for example the full suite) as unverified, naming the command.",
+      "expectations": [
+        "Does not run the full jest suite",
+        "Runs a single relevant spec file by path or a typecheck",
+        "Reports which claims are verified and which remain unverified",
+        "Names the command that would verify the remaining claim"
+      ]
+    }
+  ]
+}

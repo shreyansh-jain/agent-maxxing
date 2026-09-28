@@ -1,0 +1,15 @@
+[
+  {"query": "test_checkout_total is flaky on CI, fails like once every ten runs with no code change", "should_trigger": true},
+  {"query": "this cypress spec passes locally but times out on github actions about 20% of the time", "should_trigger": true},
+  {"query": "UserServiceTest passes alone but fails when I run the whole module, what's leaking", "should_trigger": true},
+  {"query": "our date tests broke last night around midnight UTC and then passed again this morning", "should_trigger": true},
+  {"query": "can I just add retries to the playwright config? a few e2e tests randomly fail", "should_trigger": true},
+  {"query": "pytest -p randomly makes test_cache fail sometimes but not with the default order", "should_trigger": true},
+  {"query": "go test -race sometimes reports a data race in the worker pool test", "should_trigger": true},
+  {"query": "test_parse_header fails every single time with KeyError after my refactor", "should_trigger": false},
+  {"query": "the CI pipeline is red on main, lint step is failing, can you fix it", "should_trigger": false},
+  {"query": "write tests for the new rate limiter module before I implement it", "should_trigger": false},
+  {"query": "our test suite takes 25 minutes, how do we make it faster", "should_trigger": false},
+  {"query": "review my PR that adds retries with exponential backoff to the http client", "should_trigger": false},
+  {"query": "production requests intermittently fail with 502 from the load balancer", "should_trigger": false}
+]

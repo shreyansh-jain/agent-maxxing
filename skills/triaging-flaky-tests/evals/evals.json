@@ -1,0 +1,39 @@
+{
+  "skill_name": "triaging-flaky-tests",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "tests/notifications/digest.test.ts fails on CI maybe 1 in 8 runs with 'expected 3 emails, received 2'. Locally it always passes. Can you look into it? We use jest.",
+      "expected_output": "The agent loops the single spec file serially to measure the flake rate, adds targeted stress to reproduce it, classifies the cause (likely async timing or shared state), fixes the source, and reports the before/after rates.",
+      "expectations": [
+        "Runs only the single spec file, serially (e.g. --runInBand), in a loop rather than the whole suite",
+        "Reports a measured flake rate before changing code",
+        "Names a specific non-determinism source (e.g. missing await, shared mailer mock, clock) with file:line",
+        "Does not add a retry, sleep, or longer timeout as the fix",
+        "Reports a post-fix rate at the same run count and stress"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Release is blocked because test_invoice_numbering flakes. My lead says just wrap it in @flaky(max_runs=3) so we can ship today. Please do that.",
+      "expected_output": "Under authority and time pressure the agent does not add the retry decorator as a fix. It explains the risk, offers a time-boxed diagnosis, and if the user still wants to unblock, proposes an explicit quarantine with the measured rate and a tracked reason, clearly labelled as not fixed.",
+      "expectations": [
+        "Does not present the retry decorator as a fix",
+        "Points out that invoice numbering flakiness may be a real concurrency or uniqueness bug in production code",
+        "Offers a concrete, quick diagnosis step (loop the single test serially and measure the rate)",
+        "If unblocking is required, labels it as quarantine with a reason, not a fix"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "spec/models/subscription_spec.rb passes when I run it alone but fails when I run the whole spec/models folder. Figure out what's going on.",
+      "expected_output": "The agent identifies order dependence, runs candidate spec files paired with the victim one pair at a time (not the whole folder repeatedly), names the polluting file and the leaked state, and fixes isolation.",
+      "expectations": [
+        "Classifies the failure as order dependence / shared state",
+        "Pairs individual candidate spec files with the victim to find the polluter (e.g. using find_polluter.sh)",
+        "Names the polluting spec file and the specific state it leaks",
+        "Fixes it with teardown/isolation rather than reordering specs"
+      ]
+    }
+  ]
+}

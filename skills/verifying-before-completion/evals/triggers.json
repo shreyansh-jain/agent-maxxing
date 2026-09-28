@@ -1,0 +1,14 @@
+[
+  {"query": "ok that should fix it, can you confirm everything passes and we're done", "should_trigger": true},
+  {"query": "the subagent says the migration task is complete, mark it done in the plan", "should_trigger": true},
+  {"query": "is the feature ready to hand over to QA?", "should_trigger": true},
+  {"query": "wrap up and tell me the status of the refactor", "should_trigger": true},
+  {"query": "I think the build is fixed now, double check before I tell the team", "should_trigger": true},
+  {"query": "finished task 4, moving on to task 5", "should_trigger": true},
+  {"query": "tests are failing with a null pointer in the order service, find the cause", "should_trigger": false},
+  {"query": "review my PR for code quality and bugs", "should_trigger": false},
+  {"query": "prepare the release: bump the version, write the changelog and open the PR", "should_trigger": false},
+  {"query": "write unit tests for the new parser", "should_trigger": false},
+  {"query": "this test fails randomly about 1 in 10 runs on CI", "should_trigger": false},
+  {"query": "set up a pre-commit hook that runs lint and typecheck", "should_trigger": false}
+]
