@@ -356,3 +356,7 @@ Frontend-specific skills stay in their upstream repos. This repo covers practice
 6. **No evals.**
 
 The repo's design responds to each of these; see the [README](README.md#design-decisions).
+
+---
+
+This catalog is an independent survey. The projects listed are not affiliated with it and have not endorsed it. Product and company names are trademarks of their respective owners. Star and install counts are approximate, as reported on 2026-09-28.

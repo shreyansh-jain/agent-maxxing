@@ -255,7 +255,11 @@ These skills stand on the work of the people and teams below. Every skill record
 | [supabase/agent-skills](https://github.com/supabase/agent-skills), [addyosmani/web-quality-skills](https://github.com/addyosmani/web-quality-skills), [LukasNiessen/terrashark](https://github.com/LukasNiessen/terrashark), [levnikolaevich/claude-code-skills](https://github.com/levnikolaevich/claude-code-skills), [muratcankoylan/Agent-Skills-for-Context-Engineering](https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering) | MIT | Postgres practice, WCAG audits, IaC failure modes, test strategy, LLM evaluation |
 | [trailofbits/skills](https://github.com/trailofbits/skills), [hashicorp/agent-skills](https://github.com/hashicorp/agent-skills), [antonbabenko/terraform-skill](https://github.com/antonbabenko/terraform-skill), [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills), [NeoLabHQ/context-engineering-kit](https://github.com/NeoLabHQ/context-engineering-kit) | CC-BY-SA / MPL / custom / none / GPL | Ideas only (no text): variant analysis, depth scaling, IaC risk categories, UI guidelines, rubric-first judging |
 
-Listing a source here does not imply its authors endorse this work.
+### Independence and trademarks
+
+skills-map is an independent, personal project. It is not affiliated with, sponsored by, or endorsed by any of the people or companies named in this repository, and listing a source does not imply that its authors endorse this work.
+
+Claude and Anthropic are trademarks of Anthropic, PBC. OpenAI, Codex, GitHub, Copilot, Gemini, Cursor, Vercel, Sentry and all other product and company names are trademarks of their respective owners. They appear here only to identify compatible tools and credit sources.
 
 ## License
 
