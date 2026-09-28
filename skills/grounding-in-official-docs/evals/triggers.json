@@ -1,0 +1,14 @@
+[
+  {"query": "set up auth with better-auth in our sveltekit app, use whatever the current recommended way is", "should_trigger": true},
+  {"query": "is `useFormState` still the right hook in react 19 or did they rename it", "should_trigger": true},
+  {"query": "write the github actions workflow to cache pnpm and run tests on node 22", "should_trigger": true},
+  {"query": "pydantic is complaining that `class Config` is deprecated, fix the models properly", "should_trigger": true},
+  {"query": "add a kafka consumer using the confluent-kafka python client with manual offset commits", "should_trigger": true},
+  {"query": "what's the kubectl flag to wait for a rollout to finish with a timeout, put it in deploy.sh", "should_trigger": true},
+  {"query": "upgrade the project from pydantic v1 to v2 across all 40 model files", "should_trigger": false},
+  {"query": "design the public API for our own internal feature-flag SDK", "should_trigger": false},
+  {"query": "rename `usr` to `user` across src/ and fix the imports", "should_trigger": false},
+  {"query": "research how our competitors price their API and write it up", "should_trigger": false},
+  {"query": "the login page throws a hydration mismatch error after yesterday's merge, find out why", "should_trigger": false},
+  {"query": "write an ADR explaining why we picked postgres over dynamodb", "should_trigger": false}
+]

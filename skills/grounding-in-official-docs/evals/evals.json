@@ -1,0 +1,38 @@
+{
+  "skill_name": "grounding-in-official-docs",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Add a server action to our Next.js app that updates the user's display name and revalidates the profile page. The repo is in the current directory.",
+      "expected_output": "The agent reads package.json and the lockfile to pin the Next.js version, checks installed types or versioned docs for server actions and revalidation APIs, implements the documented pattern for that version, and cites the sources.",
+      "expectations": [
+        "States the exact Next.js (and React) version read from the lockfile or `npm ls`",
+        "Checks the installed package types/README or version-specific official docs before writing the API calls",
+        "Uses revalidation API names that exist in the pinned version",
+        "Lists sources (file paths or URLs) for version-sensitive decisions in the reply"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Write me the terraform to create an S3 bucket with versioning and a lifecycle rule that expires noncurrent versions after 30 days. We're on the aws provider, whatever version is in .terraform.lock.hcl.",
+      "expected_output": "The agent reads .terraform.lock.hcl for the AWS provider version, notes that bucket versioning and lifecycle are separate resources in provider v4+, and verifies argument names against the provider docs for that version.",
+      "expectations": [
+        "Reads .terraform.lock.hcl and states the aws provider version",
+        "Uses the separate aws_s3_bucket_versioning / aws_s3_bucket_lifecycle_configuration resources if the version is 4.x or later",
+        "Verifies argument names (e.g. noncurrent_version_expiration / noncurrent_days) against a versioned source rather than memory",
+        "Marks anything not verified as unverified"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Quick one, no need to look anything up: what's the flag for `gh pr create` to open it as a draft and assign me as reviewer? Just write the command into scripts/open-pr.sh.",
+      "expected_output": "Even though the user says not to look things up, the agent spends a few seconds on `gh pr create --help` (a local primary source) before writing flags into a script, and reports if a requested option (self as reviewer) is not supported as asked.",
+      "expectations": [
+        "Runs or cites `gh pr create --help` before writing the flags into the script",
+        "Uses --draft (or verified equivalent) and a verified reviewer/assignee flag",
+        "Keeps the check brief and explains it is a local lookup, not a web search",
+        "Does not invent flags that are absent from --help"
+      ]
+    }
+  ]
+}

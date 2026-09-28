@@ -1,0 +1,14 @@
+[
+  {"query": "I need to change how tax is calculated in legacy/tax_engine.php, there are no tests and the original dev left years ago", "should_trigger": true},
+  {"query": "this class news up its own db connection and http client so I can't unit test it, how do I get it under test before changing it", "should_trigger": true},
+  {"query": "we're thinking of rewriting the whole scheduler from scratch, it's unmaintainable. is there a safer way?", "should_trigger": true},
+  {"query": "add characterization tests around the export module before we touch it", "should_trigger": true},
+  {"query": "everyone's scared to touch UserManager.java, I have to add SSO login to it", "should_trigger": true},
+  {"query": "migrate our checkout flow off the old monolith one piece at a time", "should_trigger": true},
+  {"query": "clean up the helper functions I wrote today, they have good tests", "should_trigger": false},
+  {"query": "I just joined and need to understand how the ingestion pipeline works end to end", "should_trigger": false},
+  {"query": "upgrade from django 3.2 to 5.1", "should_trigger": false},
+  {"query": "add a new /health endpoint with a test", "should_trigger": false},
+  {"query": "rename the users table's email column without downtime", "should_trigger": false},
+  {"query": "the legacy report job crashed last night with a KeyError, find the cause", "should_trigger": false}
+]

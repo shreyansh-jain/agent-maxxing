@@ -1,0 +1,14 @@
+[
+  {"query": "go ahead and implement the plan in docs/plans/billing-v2.md", "should_trigger": true},
+  {"query": "build the team invites feature end to end, backend and ui", "should_trigger": true},
+  {"query": "pick up the next ticket from the saved-searches plan", "should_trigger": true},
+  {"query": "we got interrupted halfway through the migration tasks, continue from where we left off", "should_trigger": true},
+  {"query": "implement the webhook retry spec, it touches the api, the worker and the db", "should_trigger": true},
+  {"query": "add pagination to all the list endpoints", "should_trigger": true},
+  {"query": "break this spec into tasks first, don't implement yet", "should_trigger": false},
+  {"query": "write a failing test for the discount rounding bug", "should_trigger": false},
+  {"query": "run these four independent refactors in parallel with separate agents", "should_trigger": false},
+  {"query": "review what I built on this branch", "should_trigger": false},
+  {"query": "the build is failing with a type error after my change, why", "should_trigger": false},
+  {"query": "what should the api for this feature look like", "should_trigger": false}
+]

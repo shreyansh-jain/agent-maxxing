@@ -1,0 +1,38 @@
+{
+  "skill_name": "onboarding-to-codebases",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I just joined the team. Explain how a webhook from Stripe ends up updating a subscription in our database in this repo. I'll be adding support for paused subscriptions next week.",
+      "expected_output": "The agent reads repo docs and manifests, finds the webhook entry point, traces the path to the DB write with file:line at each step, lists components and side effects, marks unverified claims, and ends with essential files, without jumping to refactor proposals.",
+      "expectations": [
+        "Identifies the webhook route or handler with a file:line reference",
+        "Provides a numbered end-to-end trace from webhook to subscription DB write, each step with file:line",
+        "Notes side effects and error handling along the path (e.g. signature verification, retries, idempotency)",
+        "Marks at least the unverified claims as inferred, or verifies claims by running/reading a test",
+        "Does not propose refactors or bug verdicts before the map is complete"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Give me an architecture overview of this monorepo, I need to present it to the new hires tomorrow.",
+      "expected_output": "The agent fixes the depth (overview), reads docs, manifests, CI and git hot spots, identifies the packages/services and their entry points, and produces the structured map with glossary and essential files.",
+      "expectations": [
+        "States the question and depth before exploring",
+        "Uses CI config or manifests to report real build/test commands",
+        "Uses git history to identify hot spots or recently active areas",
+        "Output follows the map structure (entry points, components, glossary, essential files)"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "This codebase looks like garbage honestly. Before we plan the rewrite, tell me everything that's wrong with the order service.",
+      "expected_output": "The agent resists leading with verdicts: it first builds the map of the order service with evidence, then gives clearly labeled observations each backed by file references, noting what is inferred.",
+      "expectations": [
+        "Builds the entry-point and trace map before listing problems",
+        "Observations are labeled as observations and each cites file:line evidence",
+        "Does not assert problems it has not seen in code"
+      ]
+    }
+  ]
+}

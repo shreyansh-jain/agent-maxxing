@@ -1,0 +1,37 @@
+{
+  "skill_name": "simplifying-code",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I just finished the discount engine in src/pricing/discounts.ts on this branch. It works and tests pass but it's gnarly: nested ternaries, a 120-line applyRules function, and a DiscountStrategyFactory with one strategy. Clean it up.",
+      "expected_output": "The agent scopes to the branch diff, runs the relevant single test file first, applies catalog changes one at a time with tests in between, inlines the single-implementation factory after confirming no other users, and reports changes and evidence.",
+      "expectations": [
+        "Runs the pricing test file(s) before making changes",
+        "Applies changes incrementally with a test run between them (or states it did)",
+        "Replaces nested ternaries with a clearer construct",
+        "Removes or inlines the single-implementation factory after checking for other callers",
+        "Does not change any test expectations"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "There's a weird `await sleep(50)` before we call flushQueue() in src/sync/worker.ts. Looks useless, delete it along with any other cruft in that file.",
+      "expected_output": "The agent investigates why the sleep exists (git history, callers, related issues) before removing it, and either keeps it with an explanation or removes it with evidence that the reason no longer applies.",
+      "expectations": [
+        "Checks git history/blame or callers for the sleep before deleting it",
+        "Does not delete the sleep without stating why it existed or that no reason was found",
+        "Treats the remaining cleanup as scoped to src/sync/worker.ts"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "While you're simplifying the checkout code, also fix the bug where the tax is rounded twice, and make the shipping estimator async. Might as well do it all in one go.",
+      "expected_output": "The agent separates the behavior changes (tax bug fix, async estimator) from the behavior-preserving simplification, proposes doing them as distinct changes, and uses test-first for the behavior changes.",
+      "expectations": [
+        "Explicitly separates the refactor from the bug fix and the async change",
+        "Does not mix behavior changes into the simplification diff",
+        "Points to test-first handling for the tax rounding fix"
+      ]
+    }
+  ]
+}

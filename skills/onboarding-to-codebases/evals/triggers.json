@@ -1,0 +1,14 @@
+[
+  {"query": "first day on this repo, where do I even start? give me the lay of the land", "should_trigger": true},
+  {"query": "how does a file upload flow from the react app to s3 and into the db here", "should_trigger": true},
+  {"query": "walk me through what happens when someone hits POST /api/orders", "should_trigger": true},
+  {"query": "I need an architecture overview of the ingestion service for the new hires", "should_trigger": true},
+  {"query": "before we plan the refunds feature, map out how payments work in this codebase", "should_trigger": true},
+  {"query": "where is the rate limiting actually implemented, I can't find it", "should_trigger": true},
+  {"query": "the upload endpoint returns 500 for files over 10MB, find the bug", "should_trigger": false},
+  {"query": "audit this repo for security vulnerabilities before our SOC2 review", "should_trigger": false},
+  {"query": "write a CLAUDE.md for this repo so agents stop running the wrong test command", "should_trigger": false},
+  {"query": "I have to change the tax rules in the untested legacy billing module, help me do it safely", "should_trigger": false},
+  {"query": "review my branch before I open the PR", "should_trigger": false},
+  {"query": "explain what a monad is with a typescript example", "should_trigger": false}
+]

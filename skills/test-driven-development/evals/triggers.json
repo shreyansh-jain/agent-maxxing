@@ -1,0 +1,14 @@
+[
+  {"query": "add a rate limiter to the /login route, max 5 attempts per minute per IP, let's do it test first", "should_trigger": true},
+  {"query": "implement the parseDuration('1h30m') helper in utils/time.go, it should return seconds", "should_trigger": true},
+  {"query": "bug: users with a + in their email can't reset their password. can you fix it and make sure it doesn't come back", "should_trigger": true},
+  {"query": "can we do red green refactor on the new invoice rounding rules", "should_trigger": true},
+  {"query": "change the pagination on /orders from offset to cursor based, keep existing clients working", "should_trigger": true},
+  {"query": "write the OrderService.cancel method, it should refund if paid and release inventory", "should_trigger": true},
+  {"query": "our checkout test fails randomly on CI about 10% of the time, no code changes", "should_trigger": false},
+  {"query": "the legacy billing module has zero tests and I need to change how tax is computed, where do I even start", "should_trigger": false},
+  {"query": "why does this throw 'undefined is not a function' when I click save? no idea what's going on", "should_trigger": false},
+  {"query": "set up vitest in this repo, we're currently on jest", "should_trigger": false},
+  {"query": "review my PR, specifically whether the tests are any good", "should_trigger": false},
+  {"query": "what's our test coverage and which files have none", "should_trigger": false}
+]

@@ -1,0 +1,14 @@
+[
+  {"query": "design the REST API for our new bookings service, needs create, reschedule, cancel and list by user", "should_trigger": true},
+  {"query": "what should the public interface of our storage package look like? right now every caller builds S3 keys themselves", "should_trigger": true},
+  {"query": "this function takes 9 parameters and 3 of them are booleans, how should I redesign it", "should_trigger": true},
+  {"query": "I want to split the payments code out of the monolith, where should the boundary be and what does it expose", "should_trigger": true},
+  {"query": "we need to add a field to the /v1/users response that mobile clients consume, is that safe and how should we do it", "should_trigger": true},
+  {"query": "give me two or three options for the plugin API in our CLI before we commit to one", "should_trigger": true},
+  {"query": "write a PRD for the bookings feature, product wants it for Q3", "should_trigger": false},
+  {"query": "this 400-line function works but nobody can read it, clean it up without changing behavior", "should_trigger": false},
+  {"query": "we need to drop the users.legacy_id column without downtime", "should_trigger": false},
+  {"query": "upgrade us from express 4 to express 5", "should_trigger": false},
+  {"query": "look up how the stripe PaymentIntents API handles idempotency keys in the current version", "should_trigger": false},
+  {"query": "review this API PR for security issues", "should_trigger": false}
+]

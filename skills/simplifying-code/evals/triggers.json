@@ -1,0 +1,14 @@
+[
+  {"query": "the code on this branch works but it's messy, can you tidy it up before I open the PR", "should_trigger": true},
+  {"query": "there's the same 20 lines of date parsing copy pasted in 4 handlers, dedupe it", "should_trigger": true},
+  {"query": "simplify utils/format.ts, it's full of nested ternaries and nobody can read it", "should_trigger": true},
+  {"query": "remove dead code and unused exports from the reporting module", "should_trigger": true},
+  {"query": "I think I over-engineered the config loader with 3 layers of abstraction, can you flatten it without breaking anything", "should_trigger": true},
+  {"query": "deslop what the agent wrote yesterday in src/importer", "should_trigger": true},
+  {"query": "the payroll module is 8 years old, no tests, and I have to change the overtime rules", "should_trigger": false},
+  {"query": "review this PR from a teammate for bugs and readability", "should_trigger": false},
+  {"query": "the product search page takes 4s to render, make it faster", "should_trigger": false},
+  {"query": "redesign the public interface of the storage client, callers find it confusing", "should_trigger": false},
+  {"query": "write tests for the discount engine first then implement the new stacking rule", "should_trigger": false},
+  {"query": "rename the repo from api-server to core-api and update CI", "should_trigger": false}
+]

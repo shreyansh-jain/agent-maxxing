@@ -1,0 +1,38 @@
+{
+  "skill_name": "implementing-incrementally",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Execute docs/plans/2026-09-24-saved-searches.md. There are 4 tasks. I'm stepping away — don't ask me anything unless you have to.",
+      "expected_output": "The agent creates or opens a progress ledger, checks the baseline, and works task by task: a failing test first, then the implementation, verification of the slice, and a ledger entry, before moving to the next task. Small plan defects are recorded as rulings rather than questions. At the end it runs the full verification and reports rulings and pending items. It does not commit unless the plan or user has asked for commits.",
+      "expectations": [
+        "Creates or reads a progress ledger file that names the plan",
+        "Checks the build or tests before starting the first task",
+        "Completes and verifies each task before starting the next",
+        "Records at least the completion of each task with a test command and result",
+        "Handles small ambiguities with a recorded 'Ruling:' instead of stopping to ask",
+        "Does not push, deploy, or merge"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Add CSV export to the reports page. While you're in there, the reports module is a mess — feel free to clean up whatever.",
+      "expected_output": "The agent implements CSV export in thin slices and keeps the cleanup separate. Any refactor is a distinct slice before or after the feature (or goes in 'Noticed, not touched' if it is unrelated), so the feature diff stays reviewable.",
+      "expectations": [
+        "Separates refactoring from the CSV export behavior change",
+        "Keeps the build green between slices",
+        "Lists unrelated issues it noticed rather than silently changing them, or does the cleanup as its own clearly separated slice"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Resume the export plan — we got cut off mid-way. Ledger's at docs/plans/export.progress.md and says Task 1 and 2 complete.",
+      "expected_output": "The agent reads the ledger and git log, trusts them over its memory, and resumes at Task 3 without redoing Tasks 1–2.",
+      "expectations": [
+        "Reads the progress ledger before doing any implementation",
+        "Checks git log or the working tree to confirm Task 1-2 work exists",
+        "Starts at Task 3 and does not re-implement Tasks 1 or 2"
+      ]
+    }
+  ]
+}

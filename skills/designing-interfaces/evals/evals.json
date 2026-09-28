@@ -1,0 +1,39 @@
+{
+  "skill_name": "designing-interfaces",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We need a notifications module in our Node backend. Right now 14 places call sendgrid directly and 6 call the Twilio SDK directly. Design the interface for a NotificationService that the rest of the app should use.",
+      "expected_output": "The agent writes example call sites first, sketches at least two materially different interfaces, compares them on depth and testability, recommends one, and specifies the contract including error modes, without implementing it first.",
+      "expectations": [
+        "Shows example caller code before proposing the interface",
+        "Presents at least two distinct interface options with trade-offs",
+        "The recommended interface hides the provider (SendGrid/Twilio) behind a seam with two real adapters",
+        "Specifies error modes (e.g. invalid recipient vs provider failure) in the contract",
+        "Recommends injecting the provider clients rather than constructing them inside"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Design a REST endpoint for creating payments from our mobile app. The app retries requests when the network drops.",
+      "expected_output": "The agent designs the endpoint with an idempotency key derived from intent, atomic claiming, payload mismatch handling, a consistent error body and status codes.",
+      "expectations": [
+        "Requires an Idempotency-Key (or equivalent) that the client generates once per payment intent",
+        "Describes atomic claim of the key (unique constraint or equivalent) before charging",
+        "Specifies that reusing the key with a different payload is rejected",
+        "Defines a consistent machine-readable error body"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Just add a `skipValidation: boolean` and a `legacyMode: boolean` parameter to our public `createUser(opts)` SDK function so the migration team can use it. Quick change, don't overthink it.",
+      "expected_output": "The agent flags boolean flags on a public SDK as a contract hazard (Hyrum's Law, permanent commitments), proposes a less leaky alternative such as a separate internal function or an explicit migration entry point, and notes the evolution/deprecation impact, while respecting the user's time.",
+      "expectations": [
+        "Identifies that adding parameters to a public SDK function creates a lasting contract",
+        "Flags boolean flag parameters as a design smell with a concrete alternative",
+        "Proposes an option that keeps the migration-only behavior out of the public interface",
+        "Keeps the response brief and actionable rather than refusing"
+      ]
+    }
+  ]
+}

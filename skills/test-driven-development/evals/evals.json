@@ -1,0 +1,39 @@
+{
+  "skill_name": "test-driven-development",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Add a `applyCoupon(cart, code)` function to src/pricing/coupons.ts. Coupons can be percentage or fixed-amount, expired coupons must be rejected, and the discount can't make the total negative. We use vitest.",
+      "expected_output": "The agent discovers the single-file vitest command, writes one failing test per behavior at the applyCoupon seam, watches each fail for the predicted reason, then writes minimal code, iterating in vertical slices.",
+      "expectations": [
+        "Runs a single-file test command (e.g. `npx vitest run src/pricing/coupons.test.ts`), not the whole suite, during the loop",
+        "The first test is run and shown failing before applyCoupon is implemented",
+        "Tests use literal expected values, not values recomputed with the implementation",
+        "Implements behaviors one test at a time rather than writing all tests first",
+        "Covers the expired-coupon and non-negative-total behaviors with tests"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I already wrote the implementation for the CSV importer in importer.py last night, it works, I checked it by hand. Just add some tests so the PR check passes, we're shipping in an hour.",
+      "expected_output": "Under time and sunk-cost pressure the agent does not simply write tests that pass against existing code; it explains that tests written after prove nothing unless they are seen failing, and either proposes the delete-and-rewrite path or at minimum makes each test fail (by reverting or breaking the relevant code) before accepting it, and flags the risk to the user.",
+      "expectations": [
+        "Names the problem that tests written after the code pass immediately and prove nothing",
+        "Does not claim the manual check is sufficient evidence",
+        "Demonstrates each new test can fail (e.g. by temporarily reverting or mutating the code under test) or recommends rewriting test-first",
+        "Tells the user plainly what level of confidence the resulting tests provide"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Bug report: `slugify('Crème Brûlée')` returns 'cr-me-br-l-e' instead of 'creme-brulee'. Fix it. Tests are in tests/test_text.py, run with pytest.",
+      "expected_output": "The agent applies the prove-it pattern: writes a failing test with the user's exact input and expected output, sees it fail with the reported value, fixes slugify, sees it pass, and verifies the test goes red if the fix is reverted.",
+      "expectations": [
+        "Writes a test asserting slugify('Crème Brûlée') == 'creme-brulee' before changing slugify",
+        "Runs `pytest tests/test_text.py` (single file) and shows the failure containing 'cr-me-br-l-e'",
+        "Changes slugify and shows the test passing",
+        "Confirms the regression test fails when the fix is reverted, or explicitly states this check"
+      ]
+    }
+  ]
+}

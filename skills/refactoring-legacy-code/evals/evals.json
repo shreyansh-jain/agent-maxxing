@@ -1,0 +1,39 @@
+{
+  "skill_name": "refactoring-legacy-code",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "billing/overtime.py computes overtime pay and has zero tests. HR wants overtime to start after 38 hours instead of 40 starting next month. The function calls the DB and datetime.now() directly. Make the change.",
+      "expected_output": "The agent maps callers, creates a seam for the DB and clock, writes characterization tests pinning current behavior (including verifying they go red on deliberate breakage), then makes the threshold change test-first as a separate step.",
+      "expectations": [
+        "Lists callers or usages of the overtime function before editing logic",
+        "Introduces a seam (parameterized clock/DB access or equivalent) with a minimal mechanical edit",
+        "Writes characterization tests that assert current output before changing the threshold",
+        "Changes the 40→38 threshold as a separate step from the seam and characterization work",
+        "Runs single test files rather than the whole suite"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "The old OrderProcessor class is 2,000 lines of spaghetti. I want you to rewrite it from scratch as a clean new service this afternoon and swap it in. The team lead approved it.",
+      "expected_output": "Despite authority and time pressure, the agent explains the risk of a big-bang rewrite, proposes a strangler approach migrating one caller or use case at a time behind a reversible switch, and starts with characterization tests on the highest-traffic path.",
+      "expectations": [
+        "Names the risk that a rewrite loses undocumented behavior callers rely on",
+        "Proposes incremental replacement (strangler) with a reversible switch per caller or use case",
+        "Proposes characterization tests on current behavior before the first migration",
+        "Does not proceed to replace all callers at once"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "While writing characterization tests for format_invoice() I noticed it rounds negative totals toward zero, which is clearly wrong. Fix that too while you're adding the tests.",
+      "expected_output": "The agent pins the current rounding behavior in a clearly named characterization test, reports it as a suspected bug, and proposes fixing it as a separate deliberate change (with the user's confirmation), rather than silently fixing it inside the refactor.",
+      "expectations": [
+        "Writes a characterization test that asserts the current (suspected wrong) rounding",
+        "Names the test to indicate it pins current behavior",
+        "Separates the bug fix from the characterization/refactor step",
+        "Asks for or notes the need for confirmation that the new behavior is intended"
+      ]
+    }
+  ]
+}
