@@ -1,0 +1,14 @@
+[
+  {"query": "write an ADR for choosing Postgres over DynamoDB for the ledger service", "should_trigger": true},
+  {"query": "we're replacing our JWT sessions with server-side sessions, supersede ADR-0012 with a new one", "should_trigger": true},
+  {"query": "I shipped the new webhook retry config options, update the README and docs to match", "should_trigger": true},
+  {"query": "audit our docs against what's in this release, what's undocumented?", "should_trigger": true},
+  {"query": "record why we went with a monorepo so the new hires stop asking", "should_trigger": true},
+  {"query": "the CLI got two new flags and one was renamed, make sure the documentation reflects that", "should_trigger": true},
+  {"query": "create an AGENTS.md for this repo so coding agents know the test commands", "should_trigger": false},
+  {"query": "write a spec for the bulk invoice export feature before we build it", "should_trigger": false},
+  {"query": "write the PR description for this branch", "should_trigger": false},
+  {"query": "add docstrings to all the public functions in src/sdk/", "should_trigger": false},
+  {"query": "our CLAUDE.md is 400 lines, trim it down", "should_trigger": false},
+  {"query": "help me decide between Kafka and SQS for the event bus", "should_trigger": false}
+]

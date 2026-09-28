@@ -1,0 +1,14 @@
+[
+  {"query": "set up an AGENTS.md for this repo", "should_trigger": true},
+  {"query": "our CLAUDE.md is huge and out of date, trim it", "should_trigger": true},
+  {"query": "codex and claude keep running the whole test suite, add instructions so they only run the file they touched", "should_trigger": true},
+  {"query": "we have AGENTS.md and CLAUDE.md with different content, consolidate them", "should_trigger": true},
+  {"query": "add a copilot-instructions.md telling it about our generated graphql types", "should_trigger": true},
+  {"query": "the payments/ package needs its own agent rules since it uses a different build tool", "should_trigger": true},
+  {"query": "write an ADR for moving to a monorepo", "should_trigger": false},
+  {"query": "update the README with the new CLI flags", "should_trigger": false},
+  {"query": "create a new skill that teaches agents our deployment process", "should_trigger": false},
+  {"query": "write a handoff doc so the next session can pick up this refactor", "should_trigger": false},
+  {"query": "write a CONTRIBUTING.md for human contributors", "should_trigger": false},
+  {"query": "explain what the agent instructions in this repo say about testing", "should_trigger": false}
+]

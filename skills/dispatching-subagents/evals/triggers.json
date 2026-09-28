@@ -1,0 +1,14 @@
+[
+  {"query": "we have 5 unrelated lint + type errors across packages/api, packages/web and packages/cli, can you farm these out to agents so they get done in parallel", "should_trigger": true},
+  {"query": "use a subagent to go read through the whole legacy/ directory and tell me where we still call the old payments client, I don't want all that output in here", "should_trigger": true},
+  {"query": "execute tasks 3 through 7 of docs/plans/export.md with a fresh agent per task and review each one", "should_trigger": true},
+  {"query": "get a second agent with fresh eyes to try to poke holes in the migration I just wrote before I open the PR", "should_trigger": true},
+  {"query": "run three agents with different approaches to the caching layer and have a judge pick the best", "should_trigger": true},
+  {"query": "the background agent says it's blocked on the auth task, what should I send it", "should_trigger": true},
+  {"query": "I'm out of context, write up where we are so a new session can continue tomorrow", "should_trigger": false},
+  {"query": "break this spec into ordered implementation tasks with acceptance criteria", "should_trigger": false},
+  {"query": "review my PR for correctness and style before I merge", "should_trigger": false},
+  {"query": "why do these three tests all fail with the same 'connection refused' error", "should_trigger": false},
+  {"query": "set up a git worktree so I can work on the hotfix without touching my feature branch", "should_trigger": false},
+  {"query": "write a new skill that teaches agents our release process", "should_trigger": false}
+]

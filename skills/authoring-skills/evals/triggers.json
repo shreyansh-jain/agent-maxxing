@@ -1,0 +1,14 @@
+[
+  {"query": "create a skill that teaches the agent how we do database migrations here", "should_trigger": true},
+  {"query": "my SKILL.md for terraform never triggers when people ask about infra, can you fix the description", "should_trigger": true},
+  {"query": "the agent loads our tdd skill but then skips writing the failing test anyway, how do I make it stick", "should_trigger": true},
+  {"query": "is this skill from github safe to install? it has a scripts folder and hooks in the frontmatter", "should_trigger": true},
+  {"query": "write evals for the debugging skill so we can tell if the new wording is better", "should_trigger": true},
+  {"query": "port mattpocock's grill-me skill into our skills repo with attribution", "should_trigger": true},
+  {"query": "add our build and test commands to AGENTS.md so every session knows them", "should_trigger": false},
+  {"query": "write a prompt for a subagent that will refactor the payments module", "should_trigger": false},
+  {"query": "document why we picked kafka in an ADR", "should_trigger": false},
+  {"query": "set up a pre-commit hook that runs eslint", "should_trigger": false},
+  {"query": "which skill should I use to debug a flaky test", "should_trigger": false},
+  {"query": "audit our npm dependencies for known vulnerabilities", "should_trigger": false}
+]

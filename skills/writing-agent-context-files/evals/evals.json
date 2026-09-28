@@ -1,0 +1,41 @@
+{
+  "skill_name": "writing-agent-context-files",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create an AGENTS.md for this repo. It's a pnpm monorepo with apps/web (Next.js) and services/billing (Go). CI is in .github/workflows/ci.yml. Make it thorough, cover everything an agent might need.",
+      "expected_output": "Despite 'thorough', the agent inspects manifests and CI, writes a short root AGENTS.md with verified narrow commands and non-obvious rules, adds a nested AGENTS.md for services/billing only if its commands differ, and links CLAUDE.md to AGENTS.md.",
+      "expectations": [
+        "Reads package manifests and .github/workflows/ci.yml before writing",
+        "Root AGENTS.md is under 100 lines",
+        "Lists narrow commands (single test file, typecheck) rather than only full-suite commands",
+        "Uses a separate nested AGENTS.md for services/billing (Go) or explains why not",
+        "Creates CLAUDE.md as a pointer (@AGENTS.md import or symlink) rather than a duplicated copy",
+        "Does not include generic advice or a directory tour"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Our CLAUDE.md is 380 lines and agents seem to ignore half of it. Clean it up.",
+      "expected_output": "The agent audits each line for non-obviousness and truth, verifies commands, cuts duplicated/generic/stale content, moves deep detail behind path references, and shows before/after line counts, asking before rewording the user's own rules.",
+      "expectations": [
+        "Verifies listed commands or paths still exist before keeping them",
+        "Removes content that duplicates README/docs or restates linter config, replacing with path references where useful",
+        "Resulting file is under 100 lines, or the agent justifies any excess",
+        "Reports before and after line counts",
+        "Asks before changing the meaning of user-authored rules"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Agents keep running `npm install` in this repo and it breaks the lockfile, we use pnpm. Fix that for good.",
+      "expected_output": "The agent adds a short, specific rule to the agent context file (creating AGENTS.md with a CLAUDE.md pointer if none exists) and suggests an enforcement option such as `only-allow pnpm` in a preinstall script.",
+      "expectations": [
+        "Adds a single explicit rule naming pnpm and forbidding npm/yarn install",
+        "Places it in AGENTS.md (with CLAUDE.md pointing to it) or the existing context file",
+        "Does not bloat the file with unrelated additions",
+        "Suggests a mechanical enforcement (e.g. preinstall only-allow, packageManager field) in addition to the prose rule"
+      ]
+    }
+  ]
+}

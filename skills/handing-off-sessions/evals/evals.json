@@ -1,0 +1,41 @@
+{
+  "skill_name": "handing-off-sessions",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We're almost out of context. Over this session we wrote docs/specs/export-v2.md, a plan at docs/plans/export-v2.md (tasks 1-4 done, 5-8 left), decided to use streaming CSV instead of building the file in memory because of the 2GB customer, and found that the S3 client retries break idempotency. The .env has AWS_SECRET_ACCESS_KEY=AKIA... that I pasted earlier. Write a handoff so tomorrow's session can continue.",
+      "expected_output": "A handoff document that gathers the git state and references the spec and plan by path without copying them. It records the streaming decision and the S3 retry finding, redacts the AWS secret, lists concrete next steps starting at plan task 5, suggests skills, and saves the document outside the repo.",
+      "expectations": [
+        "Runs git commands (status/log/diff) to capture actual state rather than writing it from memory",
+        "References docs/specs/export-v2.md and docs/plans/export-v2.md by path instead of reproducing their contents",
+        "Records the streaming-CSV decision with its reason and the S3 retry/idempotency finding",
+        "Does not include the AWS secret value; uses a placeholder or env var name",
+        "Next steps start at plan task 5 with a concrete file or command",
+        "Includes a suggested-skills section",
+        "Saves the file outside the working tree (e.g. OS temp dir) and tells the user the path"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Hand this off to my teammate who'll pick up the flaky checkout test tomorrow. They won't have this chat.",
+      "expected_output": "A handoff tailored to the flaky checkout test: the current repro rate or command, the hypotheses already ruled out, and where to start. It is written for someone with no chat history.",
+      "expectations": [
+        "Puts the flaky checkout test focus first and omits unrelated session detail",
+        "States the reproduction command and the last observed result",
+        "Lists approaches already tried and why they failed",
+        "The first next step is actionable without asking a question"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Here's the handoff from yesterday's session (in /tmp/handoff-billing.md). Pick it up and keep going.",
+      "expected_output": "The receiving agent verifies the recorded state (branch, SHA, last check) before acting. It reads only the listed files, respects recorded decisions, and starts at the first next step.",
+      "expectations": [
+        "Compares current git state against the handoff's State section",
+        "Re-runs the recorded last check before building on it",
+        "Does not re-litigate recorded decisions or retry recorded failed approaches without new evidence",
+        "Starts work at the handoff's first next step"
+      ]
+    }
+  ]
+}

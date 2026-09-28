@@ -1,0 +1,39 @@
+{
+  "skill_name": "documenting-decisions",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We just decided in this thread to move background jobs from cron + Postgres polling to SQS with a DLQ, mainly because polling was locking the jobs table at peak. We looked at Redis streams too but nobody wants to run Redis. Write this up as an ADR. The repo already has docs/architecture/decisions/ with 0001 to 0006 in MADR format.",
+      "expected_output": "The agent writes ADR 0007 in the existing MADR format and folder, capturing context, decision, the Redis-streams alternative and why it lost, and consequences, without inventing numbers.",
+      "expectations": [
+        "Creates the file in docs/architecture/decisions/ numbered 0007 following the existing filename pattern",
+        "Uses the MADR headings found in existing ADRs rather than a different template",
+        "Lists Redis streams as a rejected alternative with the stated reason",
+        "Includes negative consequences, not only benefits",
+        "Does not invent metrics, benchmarks, or quotes not present in the conversation"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I merged the branch that adds a --dry-run flag to the CLI, a new EXPORT_BUCKET env var, and a POST /exports endpoint. Update the docs.",
+      "expected_output": "The agent extracts public surface changes from the diff, builds a coverage map across reference/how-to/tutorial/explanation, updates factual reference docs directly, asks before rewriting narrative, and reports gaps.",
+      "expectations": [
+        "Reads the diff to extract changed public surface",
+        "Produces a coverage map or equivalent per-item assessment for all three items",
+        "Adds reference documentation for each of --dry-run, EXPORT_BUCKET, and POST /exports",
+        "Asks before restructuring or rewriting narrative guide sections",
+        "Reports remaining documentation gaps"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Write an ADR for renaming the `utils/date.ts` helper to `utils/time.ts`.",
+      "expected_output": "The agent recognises the rename is cheap to reverse and not a real trade-off, and recommends against an ADR, suggesting a commit or PR note instead.",
+      "expectations": [
+        "Applies the hard-to-reverse / surprising / real-trade-off test",
+        "Recommends not writing an ADR, or asks whether there is hidden context making it significant",
+        "Suggests a lighter-weight record such as the commit message or PR description"
+      ]
+    }
+  ]
+}

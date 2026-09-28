@@ -1,0 +1,14 @@
+[
+  {"query": "context is almost full, write me a handoff so a new session can pick this up", "should_trigger": true},
+  {"query": "save progress, I'm stopping for the day and will continue the migration work tomorrow", "should_trigger": true},
+  {"query": "can you checkpoint where we are on the search rewrite, decisions and what's left", "should_trigger": true},
+  {"query": "my colleague Priya is taking over the billing bug, write up everything she needs since she wasn't in this chat", "should_trigger": true},
+  {"query": "kick off a background agent to keep going on the remaining plan tasks with a summary of this conversation", "should_trigger": true},
+  {"query": "here's yesterday's handoff note, resume from it", "should_trigger": true},
+  {"query": "write an ADR recording why we chose postgres over dynamo", "should_trigger": false},
+  {"query": "update CLAUDE.md with the build commands we figured out today", "should_trigger": false},
+  {"query": "send a subagent to fix the lint errors in packages/cli", "should_trigger": false},
+  {"query": "write the PR description for this branch", "should_trigger": false},
+  {"query": "summarize this 40-page RFC for me", "should_trigger": false},
+  {"query": "draft the weekly status update email for my manager about the platform team", "should_trigger": false}
+]

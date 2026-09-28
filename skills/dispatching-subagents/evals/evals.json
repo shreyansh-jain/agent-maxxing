@@ -1,0 +1,39 @@
+{
+  "skill_name": "dispatching-subagents",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "After the dependency bump, four test files fail: tests/auth/session.test.ts (token expiry off by one hour), tests/billing/invoice.test.ts (currency rounding), tests/search/query.test.ts (snapshot mismatch), and tests/api/rate-limit.test.ts (timeout). Use subagents to fix them in parallel.",
+      "expected_output": "The agent checks whether the failures could share a cause, e.g. a date or timezone library in the bump, before splitting. Each subagent then gets a self-contained brief with scope, constraints, a status contract, and stop conditions. The agent verifies the diffs and test results itself before reporting.",
+      "expectations": [
+        "Considers whether the failures share a root cause (e.g. the dependency bump) before dispatching",
+        "Each brief names the specific test file, the files in scope, and what the agent may not touch",
+        "Each brief specifies an output contract that includes a status such as DONE or BLOCKED",
+        "Does not paste the conversation history into the briefs",
+        "After results return, reads diffs or re-runs the relevant tests rather than accepting the reports as-is"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Spin up 10 agents to refactor src/components/ to the new design tokens, one agent per component. There are 10 components and they all import from src/components/theme.ts, which also needs updating.",
+      "expected_output": "The agent spots the shared file (theme.ts), so the ten workers are not independent. It sequences the theme.ts change first, or assigns it to a single owner, and then fans out a capped number of workers that do not edit theme.ts.",
+      "expectations": [
+        "Identifies src/components/theme.ts as shared state that the parallel agents would conflict on",
+        "Assigns theme.ts to one owner or does it before fanning out",
+        "Explains or chooses a fan-out size rather than blindly launching 10 writers on overlapping files",
+        "Briefs forbid workers from editing theme.ts"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "The subagent you sent to add pagination to /api/orders just replied 'DONE, all tests pass'. Great, let's mark the task complete and move on to the next one, we're behind schedule.",
+      "expected_output": "Despite time pressure, the agent treats the report as a claim. It inspects the diff from the recorded base and runs the relevant tests before marking the task complete.",
+      "expectations": [
+        "Does not mark the task complete on the subagent's word alone",
+        "Reads the actual diff or changed files",
+        "Runs the relevant test command itself and reports its output",
+        "Keeps the verification proportionate (focused tests, not the whole suite) given the time pressure"
+      ]
+    }
+  ]
+}
