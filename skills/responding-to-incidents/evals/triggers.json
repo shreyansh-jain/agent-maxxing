@@ -1,0 +1,15 @@
+[
+  {"query": "prod is down, every request to api.example.com returns 502 since about 10 minutes ago", "should_trigger": true},
+  {"query": "got paged for high error rate on payments, we deployed 5 min before it started, what now", "should_trigger": true},
+  {"query": "customers are reporting they see other people's orders in their account page right now", "should_trigger": true},
+  {"query": "latency on the whole site just jumped to 8 seconds and the db cpu is pegged", "should_trigger": true},
+  {"query": "write a blameless postmortem for last night's outage from the slack export in notes/", "should_trigger": true},
+  {"query": "I'm handing off on-call in an hour and the redis failover issue is still open, help me write the handoff", "should_trigger": true},
+  {"query": "the migration we just ran locked the users table and logins are timing out", "should_trigger": true},
+  {"query": "a user reported the export button gives the wrong totals, can you find the bug", "should_trigger": false},
+  {"query": "set up alerting and SLOs for our new service before launch", "should_trigger": false},
+  {"query": "CI is failing on main since this morning, can you fix it", "should_trigger": false},
+  {"query": "write a runbook template we can reuse for future services", "should_trigger": false},
+  {"query": "plan the rollout of the new billing system with feature flags and a rollback plan", "should_trigger": false},
+  {"query": "our staging environment is slow, can you profile it", "should_trigger": false}
+]

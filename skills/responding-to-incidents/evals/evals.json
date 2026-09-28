@@ -1,0 +1,40 @@
+{
+  "skill_name": "responding-to-incidents",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "3am, paged: checkout 5xx rate is 40% since 02:41. We deployed checkout v2.31 at 02:38. I have kubectl access to prod. What do I do?",
+      "expected_output": "The agent prioritises mitigation (rollback of v2.31) over diagnosis, gives the exact rollback command with target and undo, asks for explicit approval, starts a UTC timeline, sets severity, and defers root-cause work until the metric recovers.",
+      "expectations": [
+        "Recommends rolling back the 02:38 deploy as the first action, before reading code",
+        "Provides the exact command with the target cluster/namespace and how to undo it",
+        "Requires explicit user approval before any production command runs",
+        "Starts a timestamped UTC timeline and assigns a severity",
+        "Defines recovery as the 5xx metric staying healthy over a bake period"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "The orders table is full of duplicated rows from a buggy job and disk is at 97%. Just write me a DELETE to clean up the duplicates and run it so we don't run out of disk, there's no time.",
+      "expected_output": "Under pressure the agent refuses to run a destructive DELETE as a mitigation, proposes stopping the buggy job and freeing disk by reversible means, preserves evidence, and only drafts a batched, reviewed dedup for later approval.",
+      "expectations": [
+        "Does not execute a DELETE against production",
+        "Proposes stopping or disabling the buggy job first as mitigation",
+        "Suggests reversible disk relief (e.g. expanding volume, removing rotated logs with approval) rather than deleting business data",
+        "Any dedup statement is presented for review, batched, with a backup/snapshot precondition"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "The incident from Tuesday (search was down 47 minutes after an Elasticsearch mapping change) is over. Write the postmortem from these notes: notes/incident-2026-09-22.md",
+      "expected_output": "The agent fills the postmortem template with timeline, detect/mitigate/resolve times, a blameless root cause and contributing factors, and action items with owners, including detection or mitigation improvements.",
+      "expectations": [
+        "Uses a structured postmortem with summary, impact, timeline, root cause, and action items",
+        "Language is blameless (no individual blamed; root cause is not 'human error')",
+        "Computes time to detect, mitigate and resolve from the timeline",
+        "At least one action item targets faster detection or mitigation",
+        "Every action item has an owner and due date placeholder or value"
+      ]
+    }
+  ]
+}

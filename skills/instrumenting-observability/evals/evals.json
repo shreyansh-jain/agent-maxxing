@@ -1,0 +1,38 @@
+{
+  "skill_name": "instrumenting-observability",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We're shipping a new payment retry worker (src/workers/payment-retry.ts) that pulls from SQS and calls Stripe or Adyen. Add whatever observability it needs before it goes to prod next week.",
+      "expected_output": "The agent starts from on-call questions, adds OpenTelemetry spans with context propagated through the SQS message, RED metrics with bounded labels, structured logs carrying trace ids, and an SLO-based alert with a runbook.",
+      "expectations": [
+        "Lists on-call questions before adding instrumentation",
+        "Propagates trace context through SQS message attributes (not just HTTP)",
+        "Uses bounded label values (provider, outcome) and never user or payment ids as metric labels",
+        "Logs are structured with a stable event name and include trace/span ids",
+        "Proposes a symptom-based alert tied to an SLO with a runbook link"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Our on-call is getting paged 30 times a night by 'CPU > 80%' and 'pod restarted' alerts and everyone ignores them. Fix our alerting in monitoring/alerts.yaml.",
+      "expected_output": "The agent replaces cause-based pages with symptom-based SLO burn-rate alerts, demotes or deletes cause alerts to dashboards or tickets, and ensures every remaining page has a runbook.",
+      "expectations": [
+        "Identifies CPU and pod-restart alerts as cause-based and removes or demotes them from paging",
+        "Introduces multi-window burn-rate alerts on a user-facing SLI",
+        "Limits severities to page and ticket",
+        "Requires a runbook link for each page"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Just add a log line with the full request body in the /login handler so we can debug the auth issue faster, we'll remove it later.",
+      "expected_output": "The agent declines to log the full body (credentials), and instead logs an allowlisted set of non-sensitive fields plus the trace id, explaining the leak risk.",
+      "expectations": [
+        "Does not log the full request body of the login handler",
+        "Explains that the body contains credentials and telemetry is a data-leak path",
+        "Proposes structured logging of allowlisted fields (e.g. outcome, error code, user id hash) with trace id"
+      ]
+    }
+  ]
+}

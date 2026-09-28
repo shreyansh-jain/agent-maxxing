@@ -1,0 +1,15 @@
+[
+  {"query": "write an alembic migration that drops the legacy_status column from invoices, we stopped using it last sprint", "should_trigger": true},
+  {"query": "need to add a foreign key from line_items.order_id to orders.id on postgres, both tables are big", "should_trigger": true},
+  {"query": "how do I change user_id from int to bigint without taking the site down? we're at 1.9 billion rows", "should_trigger": true},
+  {"query": "backfill the new normalized_email column for all 12M existing users", "should_trigger": true},
+  {"query": "is this rails migration safe to run in prod? add_column :accounts, :tier, :string, null: false, default: 'free'", "should_trigger": true},
+  {"query": "split the addresses json blob on customers into its own table and migrate the data", "should_trigger": true},
+  {"query": "add a unique constraint on subscriptions(user_id, plan_id) in mysql 8", "should_trigger": true},
+  {"query": "this query on orders takes 4 seconds, can you figure out why and speed it up", "should_trigger": false},
+  {"query": "upgrade prisma from 4 to 6 in our monorepo", "should_trigger": false},
+  {"query": "the migration we ran 5 minutes ago locked the users table and the site is down right now", "should_trigger": false},
+  {"query": "design the database schema for a new multi-tenant billing service", "should_trigger": false},
+  {"query": "migrate our frontend from webpack to vite", "should_trigger": false},
+  {"query": "write a seed script that populates the local dev database with fake users", "should_trigger": false}
+]

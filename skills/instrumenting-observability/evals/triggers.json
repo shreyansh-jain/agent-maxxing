@@ -1,0 +1,15 @@
+[
+  {"query": "add opentelemetry tracing to our fastapi service and make sure it propagates through the celery tasks", "should_trigger": true},
+  {"query": "what metrics should the new image-resize service expose before we launch it", "should_trigger": true},
+  {"query": "our prometheus is falling over, I think someone added user_id as a label, can you audit the metrics in src/metrics", "should_trigger": true},
+  {"query": "define an SLO and alerts for the checkout API, we keep getting paged for nothing", "should_trigger": true},
+  {"query": "replace all the console.log calls in the order service with proper structured logging", "should_trigger": true},
+  {"query": "we had an outage last week and couldn't tell from the logs which requests failed, how do we make sure that doesn't happen again", "should_trigger": true},
+  {"query": "migrate us off the datadog tracer to otel so we're not locked in", "should_trigger": true},
+  {"query": "the api is returning 503s for everyone right now, help", "should_trigger": false},
+  {"query": "this endpoint got slow after the last release, find out why and fix it", "should_trigger": false},
+  {"query": "add a --verbose flag to our cli that prints debug output", "should_trigger": false},
+  {"query": "write the postmortem for yesterday's database outage", "should_trigger": false},
+  {"query": "my unit test for the logger formatter is failing with a snapshot mismatch", "should_trigger": false},
+  {"query": "set up github actions to run lint and tests on every PR", "should_trigger": false}
+]

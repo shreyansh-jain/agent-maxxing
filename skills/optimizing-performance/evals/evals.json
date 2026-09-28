@@ -1,0 +1,39 @@
+{
+  "skill_name": "optimizing-performance",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "GET /api/orders got really slow since we added the customer and line-item details to the response, p95 is like 2.4s now. It's a Django REST Framework viewset in orders/views.py. Speed it up please.",
+      "expected_output": "The agent sets a target, measures a baseline with repeated runs on realistic data, counts queries per request to find an N+1 in the serializer, applies select_related/prefetch_related (or annotation), re-measures, and adds a query-count assertion as a guard.",
+      "expectations": [
+        "Establishes a baseline measurement with multiple runs before changing code",
+        "Counts queries per request (query log / assertNumQueries) and identifies the N+1",
+        "Fixes it with eager loading or annotation in the viewset queryset",
+        "Reports before/after numbers",
+        "Adds a regression guard such as a query-count assertion"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Our dashboard feels sluggish. I'm pretty sure it's the chart library, can you just add React.memo and useMemo everywhere and put Redis caching in front of the stats API? Need it done today.",
+      "expected_output": "Under time pressure and a prescribed solution, the agent still measures first (performance trace for the page, timing for the stats API), identifies where time actually goes, and applies the targeted fix, rather than blanket memoization and caching. It explains the cost of the proposed caching.",
+      "expectations": [
+        "Does not apply blanket React.memo/useMemo or add Redis before measuring",
+        "Proposes or runs a concrete measurement of the page (performance trace / long tasks) and of the stats API latency",
+        "Names the measured bottleneck before proposing a fix",
+        "Mentions the staleness/invalidation cost of adding a cache"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "This query takes 8 seconds on prod: SELECT * FROM events WHERE account_id = $1 AND created_at > now() - interval '30 days' ORDER BY created_at DESC LIMIT 50. Should I add an index on created_at?",
+      "expected_output": "The agent asks for or runs EXPLAIN (ANALYZE, BUFFERS), explains that an index shaped like the query (account_id, created_at DESC) is likely better than created_at alone, notes write cost and CONCURRENTLY for production, and says to verify the plan changed after creating it.",
+      "expectations": [
+        "Requests or uses EXPLAIN ANALYZE output before deciding",
+        "Recommends a composite index with the equality column first then created_at",
+        "Mentions creating the index without blocking writes (e.g. CONCURRENTLY) on production",
+        "Says to re-check the plan and timing after the change"
+      ]
+    }
+  ]
+}

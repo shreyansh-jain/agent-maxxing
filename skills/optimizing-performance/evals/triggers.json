@@ -1,0 +1,15 @@
+[
+  {"query": "the /search endpoint takes 3 seconds, can you make it faster", "should_trigger": true},
+  {"query": "LCP on our product page is 4.8s on mobile according to pagespeed, help", "should_trigger": true},
+  {"query": "memory on the worker keeps growing until kubernetes OOM-kills it every few hours", "should_trigger": true},
+  {"query": "our nightly import job went from 20 minutes to 2 hours after the data doubled", "should_trigger": true},
+  {"query": "should I add redis caching in front of the pricing service to speed it up?", "should_trigger": true},
+  {"query": "EXPLAIN shows a seq scan on orders, what index should I add", "should_trigger": true},
+  {"query": "the CI build takes 25 minutes, how can we cut it down", "should_trigger": true},
+  {"query": "add prometheus metrics and a latency dashboard for the checkout service", "should_trigger": false},
+  {"query": "the site is down and CPU is pegged at 100% on all pods right now", "should_trigger": false},
+  {"query": "the date picker shows the wrong month after I select a day", "should_trigger": false},
+  {"query": "rename the column created to created_at without downtime", "should_trigger": false},
+  {"query": "review this PR, it touches the orders query", "should_trigger": false},
+  {"query": "this test is slow and also fails randomly on CI", "should_trigger": false}
+]
