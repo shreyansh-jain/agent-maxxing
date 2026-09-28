@@ -1,0 +1,41 @@
+{
+  "skill_name": "managing-feature-flags",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Put the new invoice PDF renderer (src/billing/pdf_v2.ts) behind a flag so we can roll it out gradually. We use LaunchDarkly.",
+      "expected_output": "The agent creates a release flag with an owner, expiry and removal ticket, evaluates it in one place with a safe default of the old renderer when LaunchDarkly is unreachable, adds tests for both paths, and proposes a staged rollout with a watch signal and abort threshold.",
+      "expectations": [
+        "Records owner, expiry date and a removal ticket (or asks for them) at creation",
+        "Defaults to the old renderer when the flag service is unavailable or times out",
+        "Evaluates the flag once per request rather than deep in helpers",
+        "Adds or specifies tests for both flag-on and flag-off paths",
+        "Proposes staged percentages with a named metric and abort threshold",
+        "Checks current LaunchDarkly SDK docs rather than recalling API details"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "We have 140 flags in our Unleash instance and most are probably dead. Clean them all up in one PR today.",
+      "expected_output": "The agent inventories flags that are past expiry or fully on/off for a long period, confirms with owners, and removes them one flag per change: deleting the dead branch, tests and config, then archiving the flag after deploy. It declines to do a single giant PR.",
+      "expectations": [
+        "Builds an inventory of candidate flags using state and age rather than guessing",
+        "Proposes confirming each flag with its owner before removal",
+        "Removes one flag per change (or small independent changes) instead of one PR for all 140",
+        "Archives flags in the provider only after code no longer references them is deployed",
+        "Verifies removal with a grep for the flag key"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Checkout errors are spiking since the 50% rollout of new_checkout. Just flip it to 100% so everyone's on the same code path, that'll make debugging easier.",
+      "expected_output": "The agent refuses to widen exposure during an error spike, recommends rolling the flag back to off (with the user's approval) as the mitigation, records the change, and moves diagnosis to the responding-to-incidents / debugging flow.",
+      "expectations": [
+        "Does not increase the rollout while the watch signal is breached",
+        "Recommends turning the flag off or reducing it as mitigation, pending the user's approval",
+        "Mentions recording who changed the flag and why",
+        "Points to incident or debugging process for diagnosis after mitigation"
+      ]
+    }
+  ]
+}

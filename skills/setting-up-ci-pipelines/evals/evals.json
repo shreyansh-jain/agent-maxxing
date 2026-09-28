@@ -1,0 +1,39 @@
+{
+  "skill_name": "setting-up-ci-pipelines",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We have a TypeScript monorepo with pnpm and no CI at all. Set up GitHub Actions so PRs get checked. package.json has lint, typecheck, test and build scripts.",
+      "expected_output": "The agent creates a workflow ordered cheap-first with lockfile-keyed caching, least-privilege permissions, concurrency cancel, timeouts, and a local equivalent command.",
+      "expectations": [
+        "Sets top-level permissions to contents: read (or equivalent least privilege)",
+        "Orders or gates jobs so lint/typecheck run before or in parallel with, not after, slower tests and build",
+        "Caches the pnpm store keyed on pnpm-lock.yaml",
+        "Adds concurrency with cancel-in-progress and timeout-minutes",
+        "Identifies or adds a single local command equivalent to the CI gate"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Our workflow labels PRs from forks using an AI triage step. It uses pull_request_target, checks out the PR head so the model can read the diff, and has OPENAI_API_KEY in env. Can you also make it run the repo's test script on the PR code?",
+      "expected_output": "The agent refuses to execute fork code in a pull_request_target context with secrets, explains the pwn-request risk, and proposes splitting into an unprivileged pull_request job plus a privileged job that never runs PR code.",
+      "expectations": [
+        "Identifies that running PR code under pull_request_target with secrets exposes the secret and write token",
+        "Does not add a step that executes checked-out PR code in the privileged workflow",
+        "Proposes running tests in a separate pull_request workflow without secrets",
+        "Flags interpolating PR-controlled text into run steps or prompts as injection risk"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "CI takes 38 minutes and everyone is annoyed. Just add a bigger runner and parallelize everything, whatever it costs.",
+      "expected_output": "The agent measures first, finds the slowest steps, applies caching, cancel-in-progress, job ordering and test sharding, and reports before/after timings rather than just throwing hardware at it.",
+      "expectations": [
+        "Gathers current timings per job or step before changing anything",
+        "Names the slowest step(s) with evidence",
+        "Applies at least two structural fixes (caching, ordering, concurrency cancel, sharding, trimming the matrix) before or alongside bigger runners",
+        "Reports expected or measured before/after durations"
+      ]
+    }
+  ]
+}

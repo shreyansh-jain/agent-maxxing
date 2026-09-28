@@ -1,0 +1,15 @@
+[
+  {"query": "rename module.vpc to module.network in our terraform without recreating everything", "should_trigger": true},
+  {"query": "write terraform for a gke cluster with separate dev and prod state", "should_trigger": true},
+  {"query": "someone changed the security group in the aws console and now plan wants to revert it, what do I do", "should_trigger": true},
+  {"query": "our Dockerfile builds a 2GB image and runs as root, can you harden it", "should_trigger": true},
+  {"query": "import the existing cloudflare dns records into pulumi", "should_trigger": true},
+  {"query": "terraform state is locked and CI is stuck, can I force-unlock", "should_trigger": true},
+  {"query": "migrate our terraform backend from local state to s3 with locking", "should_trigger": true},
+  {"query": "set up a github actions workflow that runs lint and tests on every PR", "should_trigger": false},
+  {"query": "the terraform plan job in CI is red with a provider auth error, fix the pipeline", "should_trigger": false},
+  {"query": "our aws bill doubled last month, find what's driving it", "should_trigger": false},
+  {"query": "add a column to the users table in postgres without downtime", "should_trigger": false},
+  {"query": "prod is returning 502s after the load balancer change 5 minutes ago", "should_trigger": false},
+  {"query": "design the overall architecture for our new multi-tenant saas", "should_trigger": false}
+]

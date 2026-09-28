@@ -1,0 +1,15 @@
+[
+  {"query": "set up github actions for this python project: ruff, mypy, pytest on 3.11 and 3.12", "should_trigger": true},
+  {"query": "our CI takes 40 minutes, how do we make PR feedback faster", "should_trigger": true},
+  {"query": "pin all the third-party actions in our workflows to SHAs and tighten permissions", "should_trigger": true},
+  {"query": "add a required check so nobody can merge to main without tests passing", "should_trigger": true},
+  {"query": "switch our deploy workflow from AWS access keys to OIDC", "should_trigger": true},
+  {"query": "migrate our jenkins pipeline to gitlab ci", "should_trigger": true},
+  {"query": "is it safe to use pull_request_target for our PR labeler workflow", "should_trigger": true},
+  {"query": "the build job on my PR is failing with 'module not found', fix it", "should_trigger": false},
+  {"query": "test_checkout fails randomly on CI about 1 in 10 runs", "should_trigger": false},
+  {"query": "write terraform for the ECR repository our pipeline pushes to", "should_trigger": false},
+  {"query": "ship this branch and open a PR", "should_trigger": false},
+  {"query": "do a security audit of our authentication service", "should_trigger": false},
+  {"query": "write a commit message for these staged changes", "should_trigger": false}
+]

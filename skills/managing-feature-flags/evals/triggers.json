@@ -1,0 +1,14 @@
+[
+  {"query": "wrap the new search ranking behind a feature flag so we can turn it off if it tanks", "should_trigger": true},
+  {"query": "roll out the redesigned settings page to 5% then 25% of accounts", "should_trigger": true},
+  {"query": "add a kill switch for the recommendations service calls in case it melts down on black friday", "should_trigger": true},
+  {"query": "remove the old_dashboard flag, we've been at 100% for two months", "should_trigger": true},
+  {"query": "what happens to our app if the flagsmith API is down? right now everything breaks", "should_trigger": true},
+  {"query": "we have like 200 stale flags in launchdarkly, how should we clean them up", "should_trigger": true},
+  {"query": "set up the CI pipeline for our new monorepo", "should_trigger": false},
+  {"query": "get this branch merged and deployed to production", "should_trigger": false},
+  {"query": "calculate the sample size for our pricing experiment", "should_trigger": false},
+  {"query": "add a --verbose flag to our CLI tool", "should_trigger": false},
+  {"query": "production is returning 500s everywhere since 10 minutes ago", "should_trigger": false},
+  {"query": "add an environment variable for the database url in the terraform config", "should_trigger": false}
+]

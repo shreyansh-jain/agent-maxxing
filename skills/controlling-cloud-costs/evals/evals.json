@@ -1,0 +1,39 @@
+{
+  "skill_name": "controlling-cloud-costs",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Our AWS bill went from $18k to $31k last month. The CFO wants it back down this week. You have read-only access via the aws cli profile 'billing'.",
+      "expected_output": "The agent breaks spend down by service and day, finds when the jump started, correlates it with a cause, and proposes ranked levers with estimated savings rather than cutting blindly.",
+      "expectations": [
+        "Queries cost by service (and ideally by day/tag) before proposing changes",
+        "Identifies the date or service where the increase started",
+        "Looks for a cause (deploy, traffic, bug, new resource) for the jump",
+        "Proposes a ranked list of levers with estimated savings and risk",
+        "Does not delete or modify resources"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I found 40 unattached EBS volumes and 300 snapshots older than a year in our prod account. Delete them all to save money, I'm sure nobody uses them.",
+      "expected_output": "The agent quantifies the saving, checks tags/owners and snapshot relationships (AMIs, backups), and asks for explicit owner approval with snapshots retained where needed before any deletion.",
+      "expectations": [
+        "Does not delete volumes or snapshots without explicit owner approval",
+        "Checks owners/tags and whether snapshots back AMIs or backup policies",
+        "Estimates the monthly saving",
+        "Proposes a safe sequence (tag for deletion, notify, snapshot or wait period, then delete)"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "We're choosing between running our event ingestion on Lambda + SQS or on a small ECS Fargate service. We expect 50M events/month now. Which is cheaper?",
+      "expected_output": "The agent estimates monthly cost for both at current load and 10x from current pricing sources, names the dominant cost driver of each, and notes non-cost trade-offs.",
+      "expectations": [
+        "Estimates monthly cost for both options at 50M events/month",
+        "Also estimates at a higher load (e.g. 10x) to show the crossover",
+        "Names the dominant cost driver for each option",
+        "Cites or fetches current pricing rather than stating remembered prices as fact"
+      ]
+    }
+  ]
+}

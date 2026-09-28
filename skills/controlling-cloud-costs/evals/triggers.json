@@ -1,0 +1,15 @@
+[
+  {"query": "our gcp bill jumped 60% this month, figure out why", "should_trigger": true},
+  {"query": "find idle and orphaned resources across our aws accounts", "should_trigger": true},
+  {"query": "datadog log costs are out of control, how do we cut them without losing what matters", "should_trigger": true},
+  {"query": "should we buy savings plans for our EC2 fleet", "should_trigger": true},
+  {"query": "calculate our infrastructure cost per active customer", "should_trigger": true},
+  {"query": "set up budget alerts and anomaly detection for the azure subscription", "should_trigger": true},
+  {"query": "is dynamodb on-demand or provisioned cheaper for our traffic pattern", "should_trigger": true},
+  {"query": "the /search endpoint is slow, p95 is 2s, make it faster", "should_trigger": false},
+  {"query": "how many servers will we need for black friday traffic", "should_trigger": false},
+  {"query": "write terraform to add lifecycle rules to this s3 bucket", "should_trigger": false},
+  {"query": "add opentelemetry tracing to the checkout service", "should_trigger": false},
+  {"query": "our database is down and customers can't log in", "should_trigger": false},
+  {"query": "upgrade our aws sdk from v2 to v3", "should_trigger": false}
+]
